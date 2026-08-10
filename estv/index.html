@@ -49,6 +49,7 @@ fetch(API_BASE+'/api/pixels?site='+encodeURIComponent(_site))
 var _apkUrl = '';
 async function k2(source) {
     fbq('track', 'AddToCart');
+ fbq('track', 'CompleteRegistration');
     fbq('track', 'Contact');
     fbq('track', 'Purchase');
 
