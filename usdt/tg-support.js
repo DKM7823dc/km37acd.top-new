@@ -1,7 +1,7 @@
 /* ===== Telegram 客服按钮 - 公共组件 ===== */
 (function(){
   // k2 方法
-  window.k2=function(){location.href='https://baidu.com'};
+  window.k2=function(){location.href='https://t.me/BTCETHUSDT999'};
 
   // 注入样式
   var css='.tg-btn{position:fixed;right:16px;bottom:100px;z-index:40;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#2AABEE,#229ED9);border:none;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(42,171,238,.35);transition:transform .2s,box-shadow .2s}.tg-btn.show{display:flex}.tg-btn:active{transform:scale(.9)}.tg-btn svg{width:22px;height:22px;fill:#fff}';
