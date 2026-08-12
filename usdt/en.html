@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Mobile Mining Earn USDT</title>
+<title>手机挖矿赚USDT</title>
 <style>
 /* ===== TOKENS ===== */
 :root {
@@ -107,7 +107,7 @@ header{
   padding:14px 16px;
 }
 .brand{
-  display:flex;align-items:center;gap:8px;font-weight:700;font-size:12px;letter-spacing:.02em;
+  display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px;letter-spacing:.02em;
 }
 .brand span{
   width:28px;height:28px;border-radius:7px;
@@ -116,7 +116,7 @@ header{
   color:#03281c;font-size:15px;font-weight:800;
 }
 .uid{
-  font-size:9px;color:var(--muted);
+  font-size:11px;color:var(--muted);
   background:rgba(255,255,255,.04);
   padding:5px 10px;border-radius:20px;border:1px solid var(--border2);
   letter-spacing:.02em;
@@ -130,7 +130,7 @@ header{
   background:rgba(240,160,48,.06);
   font-weight:500;
 }
-/* ---- Language Switch ---- */
+/* ---- 语言切换 ---- */
 .lang{
   display:inline-flex;align-items:center;gap:0;
   background:rgba(255,255,255,.04);
@@ -405,13 +405,13 @@ nav span:active{opacity:.7;}
 
 <div id="app">
 
-  <!-- ============ INITIALIZATION (SIMPLIFIED) ============ -->
+  <!-- ============ 初始化（精简） ============ -->
   <div id="boot">
     <div class="logo">₮</div>
-    <h1>Mobile Mining Earn USDT</h1>
-    <div class="sub">TRC20 Cloud Mining</div>
-    <div class="sub">Latest Blockchain Money-Making Project</div>
-    <div class="lang boot-lang"><a href="index.html">中</a><a href="en.html" class="act">EN</a></div>
+    <h1>手机挖矿赚USDT</h1>
+    <div class="sub">TRC20 云算力矿机</div>
+    <div class="sub">最新的区块链赚钱项目</div>
+    <div class="lang boot-lang"><a href="en.html" class="act">中</a><a href="index.html">EN</a></div>
     <div class="boot-ring">
       <svg viewBox="0 0 120 120">
         <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="4"/>
@@ -424,98 +424,98 @@ nav span:active{opacity:.7;}
       </svg>
       <div class="boot-num"><b id="bnum">0</b><span>%</span></div>
     </div>
-    <div class="boot-status"><span class="ing">Mobile mining system initializing</span></div>
+    <div class="boot-status"><span class="ing">手机挖矿系统正在初始化</span></div>
   </div>
 
-  <!-- ============ MAIN INTERFACE ============ -->
+  <!-- ============ 主界面 ============ -->
   <header>
-    <div class="brand"><span>₮</span>Mobile Mining Earn USDT</div>
-    <div class="lang"><a href="index.html">中</a><a href="en.html" class="act">EN</a></div>
-    <div class="uid">Miner ID: <b id="uid">M-83920</b></div>
+    <div class="brand"><span>₮</span>手机挖矿赚USDT</div>
+    <div class="lang"><a href="en.html" class="act">中</a><a href="index.html">EN</a></div>
+    <div class="uid">矿工号: <b id="uid">M-83920</b></div>
   </header>
 
   <div class="card balance-card">
-    <div class="lbl">Withdrawable Balance</div>
+    <div class="lbl">可提现余额</div>
     <div class="big"><span id="bal">0.000000</span><small>USDT</small></div>
-    <span class="chain">TRC20 · Tron Network</span>
+    <span class="chain">TRC20 · 波场网络</span>
     <div class="row2">
-      <div><span class="lbl">Today's Earnings</span><b id="today" style="color:var(--accent)">0.000000</b></div>
-      <div><span class="lbl">Total Mined</span><b id="total">0.000000</b></div>
+      <div><span class="lbl">今日收益</span><b id="today" style="color:var(--accent)">0.000000</b></div>
+      <div><span class="lbl">累计产出</span><b id="total">0.000000</b></div>
     </div>
   </div>
 
   <div class="card" id="rigCard">
     <div class="rig">
-      <div class="ring" id="ring"><i><b id="hash">0.00</b><s>TH/s Hashrate</s></i></div>
+      <div class="ring" id="ring"><i><b id="hash">0.00</b><s>TH/s 算力</s></i></div>
       <div class="info">
-        <div><span class="dot"></span>Miner Status <span id="stat">Stopped</span></div>
-        <div>Pool Node <span>ap-east-3</span></div>
-        <div>Running Time <span id="uptime">00:00:00</span></div>
-        <div>Estimated Daily <span id="daily">0.00 U</span></div>
+        <div><span class="dot"></span>矿机状态 <span id="stat">已停止</span></div>
+        <div>矿池节点 <span>ap-east-3</span></div>
+        <div>运行时长 <span id="uptime">00:00:00</span></div>
+        <div>预计日产 <span id="daily">0.00 U</span></div>
       </div>
     </div>
     <div style="height:16px"></div>
-    <button class="btn" id="mineBtn">⛏ Start Mining</button>
+    <button class="btn" id="mineBtn">⛏ 开启挖矿</button>
   </div>
 
   <div class="grid">
-    <div><span class="lbl">Network Hashrate</span><b id="netHash">--</b></div>
-    <div><span class="lbl">Active Miners</span><b id="miners">--</b></div>
-    <div><span class="lbl">Current Block</span><b id="block">--</b></div>
-    <div><span class="lbl">Pool Fee</span><b>1.2 %</b></div>
+    <div><span class="lbl">全网算力</span><b id="netHash">--</b></div>
+    <div><span class="lbl">在线矿工</span><b id="miners">--</b></div>
+    <div><span class="lbl">当前区块</span><b id="block">--</b></div>
+    <div><span class="lbl">矿池费率</span><b>1.2 %</b></div>
   </div>
 
   <div class="card">
     <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:12px">
-      <span>Minimum Withdraw <b style="color:var(--ink)">1.000000 U</b></span>
-      <span>Fee <b style="color:var(--ink)">1.0 U</b></span>
+      <span>最低提取 <b style="color:var(--ink)">1.000000 U</b></span>
+      <span>手续费 <b style="color:var(--ink)">1.0 U</b></span>
     </div>
-    <button class="btn ghost" id="wdBtn">💳 Withdraw to TRC20 Wallet</button>
+    <button class="btn ghost" id="wdBtn">💳 提取收益到 TRC20 钱包</button>
   </div>
 
-  <div class="title">Live Block Feed <em>Mainnet · Auto-refresh</em></div>
+  <div class="title">实时出块日志 <em>主网 · 自动刷新</em></div>
   <div id="feed"></div>
 
-  <div class="title">Earnings History <em id="recCount">0 entries</em></div>
+  <div class="title">收益记录 <em id="recCount">0 条</em></div>
   <div class="list" id="records">
-    <div class="li" style="justify-content:center;color:var(--dim);font-size:12px;padding:22px">No records yet, start the miner to auto-settle</div>
+    <div class="li" style="justify-content:center;color:var(--dim);font-size:12px;padding:22px">暂无记录，开启矿机后自动结算</div>
   </div>
 
   <div class="foot">
-    「Mobile Mining Earn USDT」is a cloud mining service platform based on Tron TRC20 network, allowing users to participate in block rewards distribution by renting cloud hashrate. The platform adopts a transparent earnings settlement mechanism, automatically settling daily to the account balance, and supports real-time withdrawal to TRC20 wallets.<br>
-    The platform has passed security audits, servers deployed in Asia-Pacific node (ap-east-3), providing stable and efficient hashrate services to more than 120,000 miners worldwide.
+    「手机挖矿赚USDT」是基于波场 TRC20 网络的云算力服务平台，用户通过租用云端算力参与区块链出块奖励分配。平台采用透明化收益结算机制，每日自动结算至账户余额，支持 TRC20 钱包实时提取。<br>
+    平台已通过安全审计，服务器部署于亚太节点（ap-east-3），为全球超过 12 万名矿工提供稳定、高效的算力服务。
   </div>
 
   <nav id="nav">
-    <span class="act" onclick="window._tab('mining',this)"><b>⛏</b>Mining</span>
-    <span onclick="window._tab('hashrate',this)"><b>📊</b>Hashrate</span>
-    <span onclick="window._tab('bills',this)"><b>🧾</b>Bills</span>
-    <span onclick="window._tab('profile',this)"><b>👤</b>Profile</span>
+    <span class="act" onclick="window._tab('mining',this)"><b>⛏</b>挖矿</span>
+    <span onclick="window._tab('hashrate',this)"><b>📊</b>算力</span>
+    <span onclick="window._tab('bills',this)"><b>🧾</b>账单</span>
+    <span onclick="window._tab('profile',this)"><b>👤</b>我的</span>
   </nav>
 </div>
 
 <div class="mask" id="mask">
   <div class="sheet">
-    <h3>Withdraw Earnings</h3>
-    <p class="tip">Only Tron TRC20 network supported, please double-check the address before submitting</p>
-    <div class="net"><span class="on">TRC20</span><span>ERC20 (Maintenance)</span><span>BEP20 (Maintenance)</span></div>
-    <div class="fld"><label>Recipient Address</label><input id="addr" placeholder="Tron address starting with T, 34 chars"></div>
-    <div class="fld"><label>Withdraw Amount</label><input id="amt" placeholder="0.000000" inputmode="decimal"></div>
+    <h3>提取收益</h3>
+    <p class="tip">仅支持波场 TRC20 网络，请核对地址后提交</p>
+    <div class="net"><span class="on">TRC20</span><span>ERC20（维护中）</span><span>BEP20（维护中）</span></div>
+    <div class="fld"><label>收款地址</label><input id="addr" placeholder="以 T 开头的 34 位波场地址"></div>
+    <div class="fld"><label>提取数量</label><input id="amt" placeholder="0.000000" inputmode="decimal"></div>
     <div class="fee">
-      <div><span>Available Balance</span><b id="mBal">0.000000 USDT</b></div>
-      <div><span>Network Fee</span><b>1.000000 USDT</b></div>
-      <div><span>Expected Receipt</span><b id="mGet">0.000000 USDT</b></div>
-      <div><span>Arrival Time</span><b>3 - 10 minutes</b></div>
+      <div><span>可用余额</span><b id="mBal">0.000000 USDT</b></div>
+      <div><span>网络手续费</span><b>1.000000 USDT</b></div>
+      <div><span>预计到账</span><b id="mGet">0.000000 USDT</b></div>
+      <div><span>到账时间</span><b>3 - 10 分钟</b></div>
     </div>
-    <button class="btn" id="doWd">Confirm Submit</button>
+    <button class="btn" id="doWd">确认提交</button>
     <div style="height:10px"></div>
-    <button class="btn ghost" id="closeWd">Cancel</button>
+    <button class="btn ghost" id="closeWd">取消</button>
   </div>
 </div>
 <div class="toast" id="toast"></div>
 
 <script>
-/* ============ 1. INIT PROGRESS RING (~16 sec) ============ */
+/* ============ 1. 初始化进度环（约16秒） ============ */
 let p=0;
 const bn=document.getElementById('bnum');
 const circle=document.getElementById('bootCircle');
@@ -526,7 +526,7 @@ const timer=setInterval(()=>{
   bn.textContent=p;
   if(p>=100){
     clearInterval(timer);
-    document.querySelector('.ing').textContent='Initialization complete';
+    document.querySelector('.ing').textContent='初始化完成';
     document.querySelector('.ing').classList.remove('ing');
     setTimeout(()=>{
       const b=document.getElementById('boot');
@@ -534,9 +534,9 @@ const timer=setInterval(()=>{
       setTimeout(()=>b.remove(),500);
     },600);
   }
-},158);   // 100 × 158ms ≈ 15.8 sec
+},158);   // 100 × 158ms ≈ 15.8 秒
 
-/* ============ 2. MAIN LOGIC ============ */
+/* ============ 2. 主逻辑 ============ */
 const $=id=>document.getElementById(id);
 let mining=false,bal=0,today=0,total=0,rate=0,secs=0,recs=[];
 $('uid').textContent='M-'+(10000+Math.floor(Math.random()*89999));
@@ -562,11 +562,11 @@ $('netHash').textContent='826.41 PH/s';$('miners').textContent='128,904';
 const addrs=['TQ5x…9Kf2','TWd7…mB31','TJk2…Xp8a','TNa9…3Rvq','TPv4…Lz07','THb6…c9Wm','TUe1…Ks44'];
 setInterval(()=>{
   const fe=$('feed');const d=document.createElement('div');
-  const t=new Date().toLocaleTimeString('en-US',{hour12:false});
+  const t=new Date().toLocaleTimeString('zh-CN',{hour12:false});
   const r=Math.random();
-  if(r<.5) d.innerHTML=`[${t}] <span class="g">Block found #${block}</span> Reward ${(Math.random()*2+.3).toFixed(4)} U → ${addrs[Math.floor(Math.random()*7)]}`;
-  else if(r<.8) d.textContent=`[${t}] Submitted share accepted  difficulty=${(Math.random()*8+1).toFixed(2)}M  latency ${Math.floor(30+Math.random()*25)}ms`;
-  else d.textContent=`[${t}] New miner joined ${addrs[Math.floor(Math.random()*7)]}  hashrate +${(Math.random()*3).toFixed(2)} TH/s`;
+  if(r<.5) d.innerHTML=`[${t}] <span class="g">爆块 #${block}</span> 奖励 ${(Math.random()*2+.3).toFixed(4)} U → ${addrs[Math.floor(Math.random()*7)]}`;
+  else if(r<.8) d.textContent=`[${t}] 提交份额已接受  难度=${(Math.random()*8+1).toFixed(2)}M  延迟 ${Math.floor(30+Math.random()*25)}ms`;
+  else d.textContent=`[${t}] 新矿工接入 ${addrs[Math.floor(Math.random()*7)]}  算力 +${(Math.random()*3).toFixed(2)} TH/s`;
   fe.appendChild(d);if(fe.children.length>7)fe.removeChild(fe.firstChild);
 },1500);
 
@@ -575,14 +575,14 @@ $('mineBtn').onclick=()=>{
   const b=$('mineBtn');
   if(mining){
     rate=8+Math.random()*4;
-    b.textContent='⏸ Stop Mining';b.className='btn stop';
-    $('stat').textContent='Running';$('rigCard').classList.add('on');
-    toast('Miner started, connecting to pool…');
+    b.textContent='⏸ 停止挖矿';b.className='btn stop';
+    $('stat').textContent='运行中';$('rigCard').classList.add('on');
+    toast('矿机已启动，正在接入矿池…');
   }else{
-    b.textContent='⛏ Start Mining';b.className='btn';
-    $('stat').textContent='Stopped';$('rigCard').classList.remove('on');
+    b.textContent='⛏ 开启挖矿';b.className='btn';
+    $('stat').textContent='已停止';$('rigCard').classList.remove('on');
     $('ring').style.setProperty('--p','0%');$('hash').textContent='0.00';
-    toast('Miner stopped');
+    toast('矿机已停止');
   }
 };
 
@@ -600,13 +600,13 @@ setInterval(()=>{
         ss=String(secs%60).padStart(2,'0');
   $('uptime').textContent=`${hh}:${mm}:${ss}`;
   render();
-  if(secs%20===0) addRec('Pool settlement · block reward',+(inc*20).toFixed(6),false);
+  if(secs%20===0) addRec('矿池结算 · 出块奖励',+(inc*20).toFixed(6),false);
 },1000);
 
 function addRec(name,amount,out){
-  recs.unshift({name,amount,out,time:new Date().toLocaleString('en-US',{hour12:false})});
+  recs.unshift({name,amount,out,time:new Date().toLocaleString('zh-CN',{hour12:false})});
   if(recs.length>15)recs.pop();
-  $('recCount').textContent=recs.length+' entries';
+  $('recCount').textContent=recs.length+' 条';
   $('records').innerHTML=recs.map(r=>`<div class="li"><div>${r.name}<div class="t">${r.time}</div></div>
     <div class="amt ${r.out?'out':''}">${r.out?'-':'+'}${f(Math.abs(r.amount))}</div></div>`).join('');
 }
@@ -616,21 +616,21 @@ $('closeWd').onclick=()=>$('mask').classList.remove('show');
 $('amt').oninput=e=>{const v=parseFloat(e.target.value)||0;$('mGet').textContent=f(Math.max(0,v-1))+' USDT';};
 $('doWd').onclick=()=>{
   const a=$('addr').value.trim(),v=parseFloat($('amt').value);
-  if(!/^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(a))return toast('Invalid TRC20 address format');
-  if(!v||v<1)return toast('Minimum withdrawal amount is 1 USDT');
-  if(v>bal)return toast('Insufficient withdrawable balance');
+  if(!/^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(a))return toast('TRC20 地址格式不正确');
+  if(!v||v<1)return toast('最低提取数量为 1 USDT');
+  if(v>bal)return toast('可提现余额不足');
   bal-=v;render();
-  addRec('Withdrawal · TRC20 '+a.slice(0,6)+'…'+a.slice(-4),v,true);
+  addRec('提现 · TRC20 '+a.slice(0,6)+'…'+a.slice(-4),v,true);
   $('mask').classList.remove('show');$('addr').value='';$('amt').value='';
-  toast('Withdrawal submitted, waiting for on-chain confirmation');
+  toast('提现申请已提交，等待链上确认');
 };
-/* ============ 3. BOTTOM NAVIGATION SWITCH ============ */
+/* ============ 3. 底部导航切换 ============ */
 window._tab=function(tab,el){
-  // update active state
+  // 更新激活态
   var spans=document.querySelectorAll('#nav span');
   for(var i=0;i<spans.length;i++)spans[i].classList.remove('act');
   el.classList.add('act');
-  // non-mining tab → open withdrawal modal (same as wdBtn)
+  // 非挖矿页 → 打开提现弹窗（和 wdBtn 一样）
   if(tab!=='mining'){
     document.getElementById('mask').classList.add('show');
     render();
