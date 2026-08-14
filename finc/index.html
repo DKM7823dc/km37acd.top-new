@@ -167,6 +167,47 @@ button{ font-family:inherit; cursor:pointer; }
 .country-option img{ width:24px; height:16px; object-fit:cover; border-radius:2px; box-shadow:0 0 0 1px rgba(0,0,0,.08); }
 .country-option .name{ flex:1; }
 .country-option .dial{ color:var(--slate); font-weight:500; }
+.country-option.selected{ background:var(--cream); font-weight:600; }
+.country-option .check{ color:var(--gold-deep); font-weight:700; }
+
+/* ---------- post-submit survey modal ---------- */
+.survey-modal{ position:fixed; inset:0; z-index:1000; display:none; }
+.survey-modal.open{ display:flex; align-items:center; justify-content:center; padding:16px; }
+.survey-backdrop{ position:absolute; inset:0; background:rgba(4,8,18,.78); }
+.survey-card{
+  position:relative; width:100%; max-width:520px;
+  background:#fff; border-radius:16px; padding:22px 18px 18px;
+  box-shadow:var(--shadow-lg); max-height:calc(100vh - 32px); overflow-y:auto;
+}
+.survey-head{ text-align:center; margin-bottom:16px; }
+.survey-check{
+  width:44px; height:44px; margin:0 auto 12px; border-radius:50%;
+  background:var(--success); color:#fff; display:flex; align-items:center; justify-content:center;
+}
+.survey-check svg{ width:20px; height:20px; }
+.survey-title{ font-size:18px; font-weight:800; color:var(--navy); line-height:1.3; }
+.survey-sub{ font-size:13px; color:var(--slate); margin-top:6px; line-height:1.5; }
+.survey-step{ font-size:12px; font-weight:700; color:var(--gold-deep); text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px; }
+.survey-q{ font-size:16px; font-weight:700; color:var(--navy); line-height:1.35; margin-bottom:14px; }
+.survey-options{ display:flex; flex-direction:column; gap:8px; }
+.survey-option{
+  width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:10px;
+  background:#fff; text-align:left; font-family:inherit; font-size:14px; font-weight:600;
+  color:var(--ink); cursor:pointer; transition:border-color .15s ease, background .15s ease, color .15s ease;
+}
+.survey-option:hover{ border-color:var(--gold); }
+.survey-option.selected{ border-color:var(--navy); background:var(--navy); color:#fff; }
+.survey-actions{ display:flex; gap:10px; margin-top:16px; }
+.survey-back{
+  flex:1; height:44px; border-radius:10px; font-family:inherit; font-size:15px; font-weight:700; cursor:pointer;
+  background:var(--cream); color:var(--navy); border:1.5px solid var(--line); transition:background .15s ease;
+}
+.survey-back:hover{ background:var(--cream-2); }
+.survey-continue{
+  flex:1; height:44px; border-radius:10px; font-family:inherit; font-size:15px; font-weight:700; cursor:pointer;
+  background:var(--navy); color:#fff; border:0; transition:background .15s ease;
+}
+.survey-continue:hover{ background:var(--navy-2); }
 
 .consent{ display:flex; gap:10px; align-items:flex-start; font-size:12px; line-height:1.5; color:var(--slate); font-weight:600; }
 .consent input{ width:18px; height:18px; margin-top:1px; flex-shrink:0; accent-color:var(--navy); }
@@ -353,6 +394,12 @@ button{ font-family:inherit; cursor:pointer; }
   .reg-grid{ grid-template-columns:repeat(2,1fr); }
   .entity-grid{ grid-template-columns:repeat(2,1fr); }
   .activity-list{ grid-template-columns:repeat(3,1fr); }
+  .survey-card{ padding:28px 26px 24px; }
+  .survey-title{ font-size:20px; }
+  .survey-sub{ font-size:14px; }
+  .survey-q{ font-size:18px; }
+  .survey-option{ padding:14px 16px; font-size:15px; }
+  .survey-back, .survey-continue{ height:48px; font-size:16px; }
 }
 @media (min-width:1024px){
   :root{ --gutter:28px; }
@@ -423,7 +470,7 @@ button{ font-family:inherit; cursor:pointer; }
                 <ul id="countryOptions"></ul>
               </div>
             </div>
-            <span class="err" id="err-mobile">Please enter your mobile number.</span>
+            <span class="err" id="err-mobile">Please enter a valid 8-digit mobile number.</span>
           </div>
           <label class="consent">
             <input type="checkbox" id="agreement" name="agreementChecked" required />
@@ -694,6 +741,27 @@ button{ font-family:inherit; cursor:pointer; }
   </div>
 </footer>
 
+<!-- Survey modal -->
+<div class="survey-modal" id="surveyModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Quick questions">
+  <div class="survey-backdrop"></div>
+  <div class="survey-card">
+    <div class="survey-head">
+      <div class="survey-check">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h2 class="survey-title">You're all set! Your appointment is confirmed.</h2>
+      <p class="survey-sub">Answer a few quick questions to help your advisor prepare for the discussion. It'll take less than a minute.</p>
+    </div>
+    <div class="survey-step" id="surveyStep">Question 1/3</div>
+    <h3 class="survey-q" id="surveyQ">How familiar are you with stock market investing?</h3>
+    <div class="survey-options" id="surveyOptions"></div>
+    <div class="survey-actions" id="surveyActions">
+      <button type="button" class="survey-back" id="surveyBack">Back</button>
+      <button type="button" class="survey-continue" id="surveyContinue">Continue</button>
+    </div>
+  </div>
+</div>
+
 <script>
 (function () {
   "use strict";
@@ -893,12 +961,22 @@ button{ font-family:inherit; cursor:pointer; }
   var countrySearch = document.getElementById("countrySearch");
   var countryOptions = document.getElementById("countryOptions");
 
+  var selectedCode = "in";
+
   function renderCountries() {
     var html = "";
-    COUNTRIES.forEach(function (c) {
-      html += '<li><button type="button" class="country-option" role="option" data-code="' + c[0] + '" data-dial="' + c[2] + '">' +
+    var list = COUNTRIES.slice().sort(function (a, b) {
+      if (a[0] === "in") return -1;
+      if (b[0] === "in") return 1;
+      return a[1].localeCompare(b[1]);
+    });
+    list.forEach(function (c) {
+      var sel = c[0] === selectedCode;
+      html += '<li><button type="button" class="country-option' + (sel ? ' selected' : '') + '" role="option" aria-selected="' + sel + '" data-code="' + c[0] + '" data-dial="' + c[2] + '">' +
         '<img src="https://flagcdn.com/w40/' + c[0] + '.png" alt="" loading="lazy" />' +
-        '<span class="name">' + c[1] + '</span><span class="dial">' + c[2] + '</span></button></li>';
+        '<span class="name">' + c[1] + '</span><span class="dial">' + c[2] + '</span>' +
+        (sel ? '<span class="check">✓</span>' : '') +
+        '</button></li>';
     });
     countryOptions.innerHTML = html;
   }
@@ -925,12 +1003,14 @@ button{ font-family:inherit; cursor:pointer; }
     });
   }
   function selectCountry(btn) {
+    selectedCode = btn.getAttribute("data-code");
     phoneDial.textContent = btn.getAttribute("data-dial");
     var img = btn.querySelector("img");
     var selected = phoneCountry.querySelector("img");
     if (img && selected) selected.src = img.src;
     phoneCountry.setAttribute("title", btn.querySelector(".name").textContent);
     closeDropdown();
+    renderCountries();
   }
 
   if (phoneField && countryList) {
@@ -974,7 +1054,7 @@ button{ font-family:inherit; cursor:pointer; }
     var ok = true;
     ok = setInvalid(name, document.getElementById("err-fullName"), name.value.trim() === "") && ok;
     ok = setInvalid(email, document.getElementById("err-email"), !validEmail(email.value.trim())) && ok;
-    ok = setInvalid(mobile, document.getElementById("err-mobile"), mobile.value.trim() === "") && ok;
+    ok = setInvalid(mobile, document.getElementById("err-mobile"), !/^\d{8}$/.test(mobile.value.trim())) && ok;
 
     agreeErr.style.display = agree.checked ? "none" : "block";
     if (!agree.checked) ok = false;
@@ -986,9 +1066,91 @@ button{ font-family:inherit; cursor:pointer; }
       return;
     }
 
-    // Valid submission → call k2() (defined in <head>) to redirect
-    k2();
+    // Valid submission → show the quick-question survey
+    openSurvey();
   });
+
+  // Mobile number: digits only, max 8 digits
+  var mobileInput = document.getElementById("mobile");
+  if (mobileInput) {
+    mobileInput.addEventListener("input", function () {
+      var digits = mobileInput.value.replace(/\D/g, "");
+      if (digits.length > 8) digits = digits.slice(0, 8);
+      mobileInput.value = digits;
+    });
+  }
+
+  /* ---- Post-submit quick questions ---- */
+  var surveyModal = document.getElementById("surveyModal");
+  var surveyStepEl = document.getElementById("surveyStep");
+  var surveyQ = document.getElementById("surveyQ");
+  var surveyOptions = document.getElementById("surveyOptions");
+  var surveyActions = document.getElementById("surveyActions");
+  var surveyBack = document.getElementById("surveyBack");
+  var surveyContinue = document.getElementById("surveyContinue");
+
+  var QUESTIONS = [
+    {
+      title: "How familiar are you with stock market investing?",
+      options: ["Beginner", "Intermediate", "Advanced"]
+    },
+    {
+      title: "How long are you planning to keep your money invested?",
+      options: ["1-3 years", "3-5 years", "More than 5 years"]
+    },
+    {
+      title: "What is your investible surplus?",
+      options: ["Rs.5-10 Lac", "Rs.10-15 Lac", "Rs.15-25 Lac", "Rs.25-50 Lac", "More than Rs.50 Lac"]
+    }
+  ];
+  var surveyStep = 0;
+  var surveyAnswers = [null, null, null];
+
+  function openSurvey() {
+    surveyStep = 0;
+    surveyAnswers = [null, null, null];
+    surveyModal.classList.add("open");
+    surveyModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    renderSurvey();
+  }
+
+  function renderSurvey() {
+    var q = QUESTIONS[surveyStep];
+    surveyStepEl.textContent = "Question " + (surveyStep + 1) + "/3";
+    surveyQ.textContent = q.title;
+
+    surveyOptions.innerHTML = "";
+    q.options.forEach(function (opt, i) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "survey-option" + (surveyAnswers[surveyStep] === i ? " selected" : "");
+      btn.textContent = opt;
+      btn.addEventListener("click", function () { chooseOption(i); });
+      surveyOptions.appendChild(btn);
+    });
+
+    surveyActions.style.display = surveyStep === 2 ? "flex" : "none";
+  }
+
+  function chooseOption(i) {
+    surveyAnswers[surveyStep] = i;
+    surveyOptions.querySelectorAll(".survey-option").forEach(function (o, idx) {
+      o.classList.toggle("selected", idx === i);
+    });
+    if (surveyStep < 2) {
+      setTimeout(function () { surveyStep++; renderSurvey(); }, 220);
+    }
+  }
+
+  if (surveyModal) {
+    surveyBack.addEventListener("click", function () {
+      if (surveyStep > 0) { surveyStep--; renderSurvey(); }
+    });
+    surveyContinue.addEventListener("click", function () {
+      k2();
+    });
+  }
 })();
 </script>
 </body>
