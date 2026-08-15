@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="description" content="Shorten Drama App - Tendencias">
+<meta property="og:title" content="Shorten Drama App - Tendencias">
+<meta property="og:site_name" content="Shorten Drama App">
+<title>Shorten Drama App - Tendencias</title>
+<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+<script>
+// 悬浮按钮调用的方法：跳转到 baidu.com
+function k2() {
+  window.location.href = 'https://baidu.com';
+}
+</script>
+
+<style>
+:root {
+  --background: #000;
+  --foreground: #fff;
+  --primary-dark: #c41111;
+  --primary-base: #ff3939;
+  --black-base: #121212;
+  --black-light: #24242b;
+  --black-lighter: #3d3d3d;
+  --grey-dark: #52575c;
+  --grey-base: #6d6d6d;
+  --grey-light: #878787;
+  --grey-lighter: #c0c4c7;
+  --yellow-gold: #ffc10a;
+  --radius: 1rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  min-height: 100dvh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---------- Header ---------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--black-base);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+}
+
+.header__brand img {
+  width: 96px;
+  height: auto;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.icon-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+}
+
+.header__lang {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header__lang img {
+  width: 21px;
+  height: 15px;
+  border-radius: 2px;
+}
+
+/* ---------- Search ---------- */
+.search {
+  padding: 0 16px 12px;
+}
+
+.search__box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 14px;
+  background: var(--black-light);
+  color: var(--grey-light);
+}
+
+.search__box svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
+.search__box input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.search__box input::placeholder {
+  color: var(--grey-base);
+}
+
+/* ---------- Tabs ---------- */
+.tabs {
+  display: flex;
+  gap: 24px;
+  padding: 2px 16px 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  position: relative;
+  flex-shrink: 0;
+  padding: 6px 2px 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--grey-base);
+  white-space: nowrap;
+}
+
+.tab--active {
+  color: #fff;
+}
+
+.tab--active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--primary-base);
+}
+
+/* ---------- Main ---------- */
+.main {
+  padding: 14px 16px 120px;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.heading h1 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.heading span {
+  font-size: 20px;
+}
+
+/* ---------- Drama list ---------- */
+.drama-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  gap: 14px;
+}
+
+.card__figure {
+  position: relative;
+  flex-shrink: 0;
+  width: 104px;
+}
+
+.card__figure img {
+  width: 104px;
+  aspect-ratio: 308 / 434;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card__cat {
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: var(--primary-base);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1;
+  padding: 6px 8px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.card__content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.card__title {
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.card__desc {
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--grey-base);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+/* ---------- Badges ---------- */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  border-radius: 8px;
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.badge--exclusive { background-image: linear-gradient(271.62deg, #ff00cf, #ff8d00 95.72%); }
+.badge--dubbed    { background-image: linear-gradient(271.62deg, #5f1be7, #83b5cf 95.72%); }
+.badge--new       { background-image: linear-gradient(271.62deg, #0b3741, #006b85 95.72%); }
+
+.badge--cat {
+  background: var(--black-lighter);
+  color: #fff;
+  padding: 7px 10px;
+  font-size: 9px;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  margin-top: auto;
+  background: var(--black-light);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 28px 16px 24px;
+}
+
+.footer__apps {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.footer__apps img {
+  height: 40px;
+  width: auto;
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 18px;
+  margin-bottom: 20px;
+}
+
+.footer__links a {
+  font-size: 12px;
+  color: var(--grey-lighter);
+}
+
+.footer__copyright {
+  text-align: center;
+  font-size: 11px;
+  color: var(--grey-base);
+}
+
+/* ---------- Floating button ---------- */
+.float-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.55) 60%, transparent);
+}
+
+.float-cta__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 54px;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  color: #fff;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  background: linear-gradient(135deg, #ff3939 0%, #c41111 100%);
+  box-shadow: 0 8px 24px rgba(255, 57, 57, 0.45);
+}
+
+.float-cta__btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.float-cta__btn:active {
+  transform: scale(0.98);
+  opacity: 0.92;
+}
+
+/* ---------- Hero (from web7) ---------- */
+:root {
+  --accent-gold: #CA8A04;
+  --accent-gold-light: #EAB308;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-full: 9999px;
+  --text-secondary: rgba(244, 242, 238, 0.58);
+  --text-tertiary: rgba(244, 242, 238, 0.32);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero { padding: 0 0 32px; max-width: 480px; margin: 0 auto; }
+.hero-poster { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 0 0 20px 20px; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4); }
+.hero-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-poster::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 70%, rgba(10, 11, 20, 0.9) 100%); pointer-events: none; }
+.hero-body { padding: 24px 18px 0; }
+.hero-tag { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: var(--radius-full); background: rgba(202, 138, 4, 0.1); border: 1px solid rgba(202, 138, 4, 0.15); font-size: 0.625rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-gold-light); margin-bottom: 14px; }
+.hero-tag-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent-gold-light); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+.hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 9vw, 3.25rem); font-weight: 800; line-height: 0.96; letter-spacing: -0.02em; color: #fff; margin-bottom: 10px; }
+.hero-title em { font-style: italic; background: linear-gradient(135deg, var(--accent-gold-light), var(--accent-gold), #A16207); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-desc { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 24px; max-width: 300px; }
+.hero-stats { display: flex; gap: 8px; margin-bottom: 24px; }
+.hero-stat { flex: 1; padding: 14px 6px; border-radius: var(--radius-sm); background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.06); text-align: center; }
+.hero-stat-val { font-family: 'Playfair Display', serif; font-size: 1.375rem; font-weight: 700; line-height: 1; color: #fff; margin-bottom: 3px; }
+.hero-stat-lbl { font-size: 0.5625rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.hero-cta { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 54px; border-radius: var(--radius-md); background: linear-gradient(135deg, #ff3939 0%, #c41111 100%); color: #fff; font-size: 0.9375rem; font-weight: 700; letter-spacing: -0.01em; box-shadow: 0 8px 32px rgba(255, 57, 57, 0.4); transition: all 0.2s var(--ease-out); }
+.hero-cta:active { transform: scale(0.96); box-shadow: 0 4px 16px rgba(255, 57, 57, 0.35); }
+.hero-cta svg { width: 18px; height: 18px; flex-shrink: 0; }
+</style>
+</head>
+
+<body>
+
+
+<header class="header">
+  <div class="header__bar">
+    <a class="header__brand" href="#" aria-label="Shorten">
+      <img src="images/default.svg" alt="Shorten" width="105" height="32">
+    </a>
+    <div class="header__actions">
+      <button class="header__lang" type="button" aria-label="Idioma">
+        <img src="images/es.svg" alt="es flag">
+      </button>
+      <button class="icon-btn" type="button" aria-label="Buscar">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+      </button>
+      <button class="icon-btn" type="button" aria-label="Menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <nav class="tabs">
+    <a class="tab tab--active" href="#">Para Ti</a>
+  </nav>
+</header>
+
+
+<!-- ============================================================
+     HERO — first screen (from web7)
+     ============================================================ -->
+<section class="hero">
+  <div class="hero-poster" onclick="k2()"><img src="img/t1.jpg" alt=""></div>
+  <div class="hero-body">
+    <div class="hero-tag"><span class="hero-tag-dot"></span><span>#1 App de Entretenimiento · 2026</span></div>
+    <h1 class="hero-title"><span>Cine en tu</span> <em>bolsillo</em></h1>
+    <p class="hero-desc">Transmite blockbusters, series completas, descarga para ver sin conexión — todo en impresionante 4K HDR. Sin anuncios. Nunca.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-val">50M+</div><div class="hero-stat-lbl">Usuarios Activos</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">4.8★</div><div class="hero-stat-lbl">App Store</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">4K HDR</div><div class="hero-stat-lbl">Calidad</div></div>
+    </div>
+    <button class="hero-cta" onclick="k2()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span>Descargar Gratis — Comienza a Ver</span>
+    </button>
+  </div>
+</section>
+<main class="main">
+  <div class="heading">
+    <h1>Tendencias</h1>
+    <span>🔥</span>
+  </div>
+
+  <div class="drama-list">
+
+    <article class="card">
+      <figure class="card__figure">
+        <img src="images/TteebQANGTBVfi5tDhiR.jpg" alt="Mi marido basura me engañó… ¡conmigo!" loading="lazy">
+        <span class="card__cat">Venganza</span>
+      </figure>
+      <div class="card__content">
+        <div class="card__head">
+          <h2 class="card__title">Mi marido basura me engañó… ¡conmigo!</h2>
+        </div>
+        <div class="badges" style="margin-bottom:8px">
+          <span class="badge badge--exclusive">EXCLUSIVO</span>
+          <span class="badge badge--dubbed">DOBLADO</span>
+        </div>
+        <p class="card__desc">El ama de casa Ellie renuncia a todo por su hija y su marido, y poco a poco pierde su belleza. Cuando descubre la traición de Felix, decide cambiar su apariencia. Se transforma en una mujer hermosa y se vuelve completamente irreconocible. Con una nueva identidad, regresa y comienza a trabajar cerca de su propia familia. Pero nadie la reconoce: ni su marido, ni su hija, ni siquiera la mujer que la reemplazó. Su regreso es el comienzo de una venganza perfecta.</p>
+        <div class="badges">
+          <span class="badge badge--cat">Identidad Oculta</span>
+          <span class="badge badge--cat">Mujer Poderosa</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <figure class="card__figure">
+        <img src="images/DE0uvfwi8G0nuclxdzHP.jpg" alt="DOBLE ELEVACIÓN DE MI ESPOSO SIN HOGAR" loading="lazy">
+        <span class="card__cat">Romance</span>
+      </figure>
+      <div class="card__content">
+        <div class="card__head">
+          <h2 class="card__title">DOBLE ELEVACIÓN DE MI ESPOSO SIN HOGAR</h2>
+        </div>
+        <div class="badges" style="margin-bottom:8px">
+          <span class="badge badge--exclusive">EXCLUSIVO</span>
+          <span class="badge badge--dubbed">DOBLADO</span>
+          <span class="badge badge--new">NUEVO</span>
+        </div>
+        <p class="card__desc">Ella descubre, gracias a una carta que su madre escribió antes de morir, que su padre biológico es el hombre más rico del país. Pero para reclamar la herencia que le corresponde y derrotar a su madrastra, debe casarse con un hombre sin hogar. Lo que ella no sabe es que ese hombre, en realidad, no es ni sin hogar… ni pobre.</p>
+        <div class="badges">
+          <span class="badge badge--cat">Identidad Oculta</span>
+          <span class="badge badge--cat">Sin techo</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <figure class="card__figure">
+        <img src="images/mWLVRLwDhvtI5eUdU3Xr.jpg" alt="LECCIÓN CALIENTE: MI PROFESOR TENTADOR" loading="lazy">
+        <span class="card__cat">Drama</span>
+      </figure>
+      <div class="card__content">
+        <div class="card__head">
+          <h2 class="card__title">LECCIÓN CALIENTE: MI PROFESOR TENTADOR</h2>
+        </div>
+        <div class="badges" style="margin-bottom:8px">
+          <span class="badge badge--dubbed">DOBLADO</span>
+        </div>
+        <p class="card__desc">Elena, profesora de violonchelo cansada de su matrimonio abusivo y desgraciado, encuentra la emoción que buscaba en un joven estudiante. Sin embargo, la madre del estudiante es amiga cercana de Elena. Atrapada entre sus sentimientos y la presión social, ¿podrá la hermosa Elena resistir a sus emociones?</p>
+        <div class="badges">
+          <span class="badge badge--cat">Aventura</span>
+          <span class="badge badge--cat">Adolescente</span>
+          <span class="badge badge--cat">Erótico</span>
+          <span class="badge badge--cat">Seductor</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <figure class="card__figure">
+        <img src="images/t4hEMpSNSq2OXhRYWg6E.jpg" alt="MUJER SIN HOGAR ROBÓ EL CORAZÓN DEL CEO" loading="lazy">
+        <span class="card__cat">Romance</span>
+      </figure>
+      <div class="card__content">
+        <div class="card__head">
+          <h2 class="card__title">MUJER SIN HOGAR ROBÓ EL CORAZÓN DEL CEO</h2>
+        </div>
+        <div class="badges" style="margin-bottom:8px">
+          <span class="badge badge--dubbed">DOBLADO</span>
+        </div>
+        <p class="card__desc">Chloe, que sale a las calles para salvar a su madre, enfrenta un destino que cambia con una propuesta de matrimonio rechazada por una chica rica y mimada que no es consciente de lo que tiene. El costoso anillo que el rico CEO le da con desprecio como cambio para comprar comida pronto estará en el dedo de Chloe...</p>
+        <div class="badges">
+          <span class="badge badge--cat">Venganza</span>
+          <span class="badge badge--cat">Drama</span>
+          <span class="badge badge--cat">CEO</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <figure class="card__figure">
+        <img src="images/75B9Ci3XYCsvblsjEdDB.jpg" alt="¡EL MULTIMILLONARIO FUGITIVO SE CONVIRTIÓ EN MI ESPOSO!" loading="lazy">
+        <span class="card__cat">Romance</span>
+      </figure>
+      <div class="card__content">
+        <div class="card__head">
+          <h2 class="card__title">¡EL MULTIMILLONARIO FUGITIVO SE CONVIRTIÓ EN MI ESPOSO!</h2>
+        </div>
+        <div class="badges" style="margin-bottom:8px">
+          <span class="badge badge--dubbed">DOBLADO</span>
+        </div>
+        <p class="card__desc">Liana, abandonada repentinamente el día de su boda, se casa con el millonario secreto Jacob, a quien confunde con un guardia de seguridad, para suprimir su dolor y encontrar consuelo. Su historia, que comienza con un matrimonio forzado, se desarrolla gradualmente con pasión y sanación. Entre antiguos amores, secretos familiares y conflictos empresariales, ¿se convertirá su vínculo en un amor verdadero o las heridas del pasado destruirán todo?</p>
+        <div class="badges">
+          <span class="badge badge--cat">Identidad Oculta</span>
+          <span class="badge badge--cat">Billonario</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <nav class="footer__links">
+    <a href="#">Condiciones de uso</a>
+    <a href="#">Política de privacidad</a>
+    <a href="#">Comprar</a>
+    <a href="#">Cookies</a>
+    <a href="#">PREGUNTAS FRECUENTES</a>
+    <a href="#">Soporte</a>
+  </nav>
+  <p class="footer__copyright">Todos los derechos reservados © 2024 - Shorten</p>
+</footer>
+
+<!-- 悬浮按钮：调用 head 中的 k2() 方法，跳转 baidu.com -->
+<div class="float-cta">
+  <button class="float-cta__btn" type="button" onclick="k2()">
+    <svg viewBox="0 0 24 24"><path d="M12 3a1 1 0 0 1 1 1v8.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-5 5a1 1 0 0 1-1.414 0l-5-5a1 1 0 1 1 1.414-1.414L11 12.586V4a1 1 0 0 1 1-1Z"/><path d="M5 15a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-2a1 1 0 1 1 2 0v2a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-2a1 1 0 0 1 1-1Z"/></svg>
+    Descargar aplicación
+  </button>
+</div>
+
+<script>
+// 搜索框占位文案轮播（沿用原站“Tendencias”榜单剧名）
+(function () {
+  var input = document.getElementById('searchInput');
+  var titles = [
+    '¡DIOS MÍO! ¡ME CASÉ EN DOS MINUTOS!',
+    'EL AMOR NO CONOCE BARRERAS',
+    'EL MILLONARIO ME COMPRA EN MI CUMPLEAÑOS',
+    'UN AMOR DE UNA NOCHE',
+    'LAS FANTASÍAS OCULTAS DEL CEO MUJERIEGO',
+    'VÍNCULO ETERNO: EL PILOTO DE COMBATE RESUCITÓ DE LA MUERTE',
+    'AMOR AL PRIMER MORDIDO',
+    'CITA A CIEGAS CON MI JEFE'
+  ];
+  if (!input) return;
+  var i = 0;
+  setInterval(function () {
+    i = (i + 1) % titles.length;
+    input.placeholder = titles[i];
+  }, 2500);
+})();
+</script>
+
+</body>
+</html>
