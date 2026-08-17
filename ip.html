@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC 泄露检测 · IP规则测试</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #f6f8fc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            max-width: 720px;
+            width: 100%;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 20, 40, 0.12);
+            padding: 32px 28px;
+            transition: all 0.2s;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #0b1a33;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        h1 small {
+            font-size: 14px;
+            font-weight: 400;
+            color: #6b7a8f;
+            margin-left: auto;
+        }
+        .sub {
+            color: #5e6f88;
+            font-size: 15px;
+            border-bottom: 1px solid #e9edf4;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        .ip-box {
+            background: #f0f4fe;
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+        }
+        .ip-box .label {
+            font-weight: 500;
+            color: #1a2b44;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .ip-box .value {
+            font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+            font-size: 16px;
+            background: #fff;
+            padding: 4px 14px;
+            border-radius: 40px;
+            border: 1px solid #dce3ef;
+            color: #0b1a33;
+            word-break: break-all;
+        }
+        .ip-box .badge {
+            font-size: 12px;
+            padding: 2px 12px;
+            border-radius: 40px;
+            background: #d4e0f0;
+            color: #1f3a5f;
+        }
+        .compare-result {
+            background: #f7fafd;
+            border-radius: 16px;
+            padding: 18px 20px;
+            margin: 18px 0 22px 0;
+            border-left: 5px solid #3b7cff;
+        }
+        .compare-result .title {
+            font-weight: 600;
+            font-size: 16px;
+            color: #0b1a33;
+        }
+        .compare-result .detail {
+            margin-top: 6px;
+            font-size: 15px;
+            color: #1f3a5f;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+        }
+        .compare-result .detail span {
+            background: #eef3fa;
+            padding: 2px 12px;
+            border-radius: 20px;
+        }
+        .risk-tag {
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .risk-tag.safe {
+            background: #dff0d8;
+            color: #2b6e3b;
+        }
+        .risk-tag.danger {
+            background: #f8dddd;
+            color: #a12b2b;
+        }
+        .risk-tag.warn {
+            background: #fff3d6;
+            color: #8a6d1f;
+        }
+        .api-section {
+            margin-top: 20px;
+            background: #f9faff;
+            border-radius: 16px;
+            padding: 16px 20px;
+            border: 1px solid #e2e8f0;
+        }
+        .api-section .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 14px;
+            border-bottom: 1px dashed #e6ecf5;
+        }
+        .api-section .row:last-child {
+            border-bottom: none;
+        }
+        .api-section .key {
+            color: #42526b;
+        }
+        .api-section .val {
+            font-weight: 500;
+            color: #0b1a33;
+            text-align: right;
+        }
+        .verdict {
+            margin-top: 24px;
+            padding: 20px 24px;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            background: #eef3fa;
+            color: #1f3a5f;
+        }
+        .verdict .action {
+            font-size: 22px;
+            margin-top: 4px;
+        }
+        .verdict .action.green {
+            color: #1f8b4c;
+        }
+        .verdict .action.red {
+            color: #c72a2a;
+        }
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .btn-refresh {
+            margin-top: 18px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 40px;
+            padding: 8px 24px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.15s;
+            color: #1a2b44;
+        }
+        .btn-refresh:hover {
+            background: #f0f4fe;
+            border-color: #3b7cff;
+        }
+        footer {
+            margin-top: 18px;
+            font-size: 12px;
+            color: #8a9bb0;
+            text-align: center;
+            border-top: 1px solid #e9edf4;
+            padding-top: 18px;
+        }
+        .ip-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 10px;
+        }
+        .ip-list .item {
+            background: #eef3fa;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        @media (max-width: 480px) {
+            .card { padding: 20px; }
+            .ip-box { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="app">
+        <h1>
+            🔍 WebRTC 泄露检测
+            <small>IP规则测试</small>
+        </h1>
+        <div class="sub">依据规则：若本地IP与公网IP不一致，或公网IP为数据中心/VPN/代理，则判定为“审核/爬虫” → 留在A页</div>
+
+        <!-- 公网IP -->
+        <div class="ip-box">
+            <span class="label">🌐 公网IP</span>
+            <span class="value" id="publicIp">-</span>
+            <span class="badge" id="publicIpType">检测中...</span>
+        </div>
+
+        <!-- WebRTC 本地IP -->
+        <div class="ip-box">
+            <span class="label">📡 WebRTC 本地IP</span>
+            <div class="ip-list" id="localIpList">
+                <span class="item">获取中...</span>
+            </div>
+            <span class="badge" id="localCount">0</span>
+        </div>
+
+        <!-- 对比结果 -->
+        <div class="compare-result" id="compareResult">
+            <div class="title">⚖️ 一致性对比</div>
+            <div class="detail" id="compareDetail">
+                <span>等待检测...</span>
+            </div>
+        </div>
+
+        <!-- 公网IP 详细信息 (来自 ipapi.is) -->
+        <div class="api-section" id="ipapiSection">
+            <div style="font-weight:600; margin-bottom:8px;">📊 公网IP 威胁情报 (ipapi.is)</div>
+            <div id="ipapiContent">
+                <div class="row"><span class="key">状态</span><span class="val" id="ipapiStatus">加载中...</span></div>
+                <div class="row"><span class="key">国家</span><span class="val" id="ipapiCountry">-</span></div>
+                <div class="row"><span class="key">运营商 (ISP)</span><span class="val" id="ipapiIsp">-</span></div>
+                <div class="row"><span class="key">数据中心</span><span class="val" id="ipapiDatacenter">-</span></div>
+                <div class="row"><span class="key">VPN / 代理</span><span class="val" id="ipapiVpn">-</span></div>
+                <div class="row"><span class="key">Tor / 爬虫</span><span class="val" id="ipapiTor">-</span></div>
+            </div>
+        </div>
+
+        <!-- 最终裁决 -->
+        <div class="verdict" id="verdict">
+            <div>🧾 推荐动作</div>
+            <div class="action" id="actionDisplay">⏳ 分析中...</div>
+        </div>
+
+        <button class="btn-refresh" id="refreshBtn">⟳ 重新检测</button>
+        <footer>本页面仅用于演示，所有API调用均为前端直接请求。WebRTC 需要允许浏览器使用。</footer>
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // DOM 元素
+            const publicIpEl = document.getElementById('publicIp');
+            const publicIpTypeEl = document.getElementById('publicIpType');
+            const localIpListEl = document.getElementById('localIpList');
+            const localCountEl = document.getElementById('localCount');
+            const compareDetailEl = document.getElementById('compareDetail');
+            const ipapiStatus = document.getElementById('ipapiStatus');
+            const ipapiCountry = document.getElementById('ipapiCountry');
+            const ipapiIsp = document.getElementById('ipapiIsp');
+            const ipapiDatacenter = document.getElementById('ipapiDatacenter');
+            const ipapiVpn = document.getElementById('ipapiVpn');
+            const ipapiTor = document.getElementById('ipapiTor');
+            const actionDisplay = document.getElementById('actionDisplay');
+            const refreshBtn = document.getElementById('refreshBtn');
+
+            // 辅助：显示状态
+            function setLoading(loading) {
+                document.getElementById('app').classList.toggle('loading', loading);
+            }
+
+            // 获取公网IP (ipify)
+            function fetchPublicIP() {
+                return fetch('https://api.ipify.org?format=json')
+                    .then(res => {
+                        if (!res.ok) throw new Error('ipify 请求失败');
+                        return res.json();
+                    })
+                    .then(data => data.ip);
+            }
+
+            // 获取 WebRTC 本地IP (兼容多种浏览器)
+            function getWebRTCIPs() {
+                return new Promise((resolve) => {
+                    const ips = [];
+                    const pc = new RTCPeerConnection({
+                        iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+                    });
+                    pc.createDataChannel('');
+
+                    pc.createOffer()
+                        .then(offer => pc.setLocalDescription(offer))
+                        .catch(() => {});
+
+                    pc.onicecandidate = (event) => {
+                        if (!event || !event.candidate) {
+                            // 收集完毕
+                            pc.close();
+                            // 去重并过滤 IPv4 / IPv6 (保留IPv4)
+                            const ipv4Set = new Set();
+                            ips.forEach(ip => {
+                                // 过滤掉 0.0.0.0 和 空
+                                if (ip && ip !== '0.0.0.0' && ip !== '::' && ip !== '::1') {
+                                    // 简单过滤私有 IPv4 和公网 IPv4
+                                    if (ip.includes(':')) {
+                                        // IPv6 暂时忽略，但保留显示
+                                        ipv4Set.add(ip);
+                                    } else {
+                                        ipv4Set.add(ip);
+                                    }
+                                }
+                            });
+                            resolve([...ipv4Set]);
+                            return;
+                        }
+                        const candidate = event.candidate.candidate;
+                        if (!candidate) return;
+                        // 提取IP地址
+                        const ipRegex = /([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})|([a-fA-F0-9:]+)/g;
+                        const match = candidate.match(ipRegex);
+                        if (match) {
+                            match.forEach(ip => {
+                                if (ip && !ips.includes(ip)) {
+                                    ips.push(ip);
+                                }
+                            });
+                        }
+                    };
+                    // 超时处理（以防无candidate）
+                    setTimeout(() => {
+                        pc.close();
+                        if (ips.length === 0) ips.push('无法获取');
+                        resolve(ips);
+                    }, 3000);
+                });
+            }
+
+            // 查询 ipapi.is
+            function fetchIpapi(ip) {
+                return fetch(`https://api.ipapi.is/?q=${encodeURIComponent(ip)}`)
+                    .then(res => {
+                        if (!res.ok) throw new Error('ipapi.is 请求失败');
+                        return res.json();
+                    });
+            }
+
+            // 判断公网IP是否为私有（其实不会，但以防）
+            function isPrivateIP(ip) {
+                const parts = ip.split('.');
+                if (parts.length === 4) {
+                    const first = parseInt(parts[0]);
+                    if (first === 10) return true;
+                    if (first === 172 && parseInt(parts[1]) >= 16 && parseInt(parts[1]) <= 31) return true;
+                    if (first === 192 && parseInt(parts[1]) === 168) return true;
+                }
+                return false;
+            }
+
+            // 主检测流程
+            async function runDetection() {
+                setLoading(true);
+                try {
+                    // 1. 获取公网IP
+                    const publicIP = await fetchPublicIP();
+                    publicIpEl.textContent = publicIP;
+
+                    // 2. 获取WebRTC本地IP
+                    const localIPs = await getWebRTCIPs();
+                    if (localIPs.length === 0 || localIPs[0] === '无法获取') {
+                        localIpListEl.innerHTML = '<span class="item">未检测到</span>';
+                        localCountEl.textContent = '0';
+                    } else {
+                        localIpListEl.innerHTML = localIPs.map(ip => `<span class="item">${ip}</span>`).join('');
+                        localCountEl.textContent = localIPs.length;
+                    }
+
+                    // 3. 对比公网IP与WebRTC本地IP
+                    // 注意：本地IP可能包含私有IP，也可能包含公网IP（如果未经过NAT）
+                    // 规则：如果所有本地IP中没有一个与公网IP相同，则判定为“不一致”（可能代理/VPN）
+                    let match = false;
+                    if (localIPs.length > 0 && publicIP) {
+                        match = localIPs.some(ip => ip === publicIP);
+                    }
+
+                    // 但如果本地IP都是私有IP（如192.168.x.x），而公网是公网IP，则肯定不一致，但这是正常的NAT环境，不能判定为代理
+                    // 更合理的判断：如果本地IP中有公网IP且与公网IP不同，则说明可能代理；如果只有私有IP，则无法判断，需要结合其他信息。
+                    // 这里我们简单显示匹配结果，并标记“可能需要人工判断”
+                    let compareText = '';
+                    let compareRisk = 'safe';
+                    if (match) {
+                        compareText = '✅ 公网IP与WebRTC本地IP一致（直连）';
+                        compareRisk = 'safe';
+                    } else {
+                        if (localIPs.some(ip => !isPrivateIP(ip) && ip !== '127.0.0.1' && ip !== '::1')) {
+                            // 存在非私有IP（公网IP）但不匹配 => 可能代理
+                            compareText = '⚠️ 公网IP与WebRTC本地IP不同，且本地包含公网IP，疑似代理/VPN';
+                            compareRisk = 'danger';
+                        } else {
+                            compareText = 'ℹ️ 公网IP与WebRTC本地IP不同（本地仅私有IP），属于正常NAT环境，无法判断代理';
+                            compareRisk = 'warn';
+                        }
+                    }
+                    compareDetailEl.innerHTML = `<span>${compareText}</span>`;
+
+                    // 4. 查询 ipapi.is 获取公网IP情报
+                    let ipapiData = null;
+                    try {
+                        ipapiData = await fetchIpapi(publicIP);
+                    } catch (e) {
+                        ipapiStatus.textContent = '❌ 查询失败';
+                        console.warn('ipapi.is 失败', e);
+                    }
+
+                    if (ipapiData) {
+                        const {
+                            country_code,
+                            isp,
+                            is_datacenter,
+                            is_vpn,
+                            is_proxy,
+                            is_tor,
+                            is_crawler
+                        } = ipapiData;
+                        ipapiStatus.textContent = '✅ 成功';
+                        ipapiCountry.textContent = country_code || '-';
+                        ipapiIsp.textContent = isp || '-';
+                        ipapiDatacenter.textContent = is_datacenter ? '🔴 是' : '✅ 否';
+                        ipapiVpn.textContent = (is_vpn || is_proxy) ? '🔴 是 (VPN/代理)' : '✅ 否';
+                        ipapiTor.textContent = (is_tor || is_crawler) ? '🔴 是 (Tor/爬虫)' : '✅ 否';
+                    } else {
+                        ipapiStatus.textContent = '⏳ 未获取到数据';
+                    }
+
+                    // 5. 综合裁决：跳转B页还是留在A页？
+                    // 规则：如果 (公网IP与本地IP不一致 且 本地包含公网IP) 或者 ipapi检测到 is_datacenter 或 is_vpn 或 is_proxy 或 is_tor 或 is_crawler
+                    // 则留在A页（不跳转），否则跳转B页
+                    let shouldRedirect = true; // 默认跳转
+                    let reasons = [];
+
+                    // 检查WebRTC不一致且本地有公网IP（非私有）
+                    const hasPublicLocal = localIPs.some(ip => !isPrivateIP(ip) && ip !== '127.0.0.1' && ip !== '::1');
+                    if (!match && hasPublicLocal) {
+                        shouldRedirect = false;
+                        reasons.push('WebRTC本地IP包含公网IP但与当前公网IP不一致（疑似代理）');
+                    }
+
+                    // 检查 ipapi 结果
+                    if (ipapiData) {
+                        if (ipapiData.is_datacenter) {
+                            shouldRedirect = false;
+                            reasons.push('公网IP位于数据中心');
+                        }
+                        if (ipapiData.is_vpn || ipapiData.is_proxy) {
+                            shouldRedirect = false;
+                            reasons.push('公网IP被识别为VPN/代理');
+                        }
+                        if (ipapiData.is_tor || ipapiData.is_crawler) {
+                            shouldRedirect = false;
+                            reasons.push('公网IP被识别为Tor/爬虫');
+                        }
+                    }
+
+                    // 如果公网IP是私有IP（不太可能），但以防
+                    if (isPrivateIP(publicIP)) {
+                        shouldRedirect = false;
+                        reasons.push('公网IP为私有地址（异常）');
+                    }
+
+                    // 显示结果
+                    const verdictEl = document.getElementById('verdict');
+                    const actionEl = document.getElementById('actionDisplay');
+                    if (shouldRedirect) {
+                        actionEl.innerHTML = '✅ 跳转到 <strong>B页</strong>（真实用户）';
+                        actionEl.className = 'action green';
+                        verdictEl.style.background = '#e6f7e6';
+                    } else {
+                        actionEl.innerHTML = '⛔ 停留在 <strong>A页</strong>（审核/爬虫）';
+                        actionEl.className = 'action red';
+                        verdictEl.style.background = '#fde8e8';
+                        if (reasons.length) {
+                            const reasonText = reasons.join('；');
+                            actionEl.innerHTML += `<div style="font-size:14px;font-weight:400;margin-top:8px;color:#5e4f4f;">原因：${reasonText}</div>`;
+                        }
+                    }
+
+                } catch (error) {
+                    console.error('检测过程出错', error);
+                    document.getElementById('compareDetail').innerHTML = `<span>❌ 检测出错: ${error.message}</span>`;
+                    document.getElementById('actionDisplay').textContent = '⚠️ 检测失败，请重试';
+                } finally {
+                    setLoading(false);
+                }
+            }
+
+            // 初始化
+            refreshBtn.addEventListener('click', runDetection);
+            runDetection();
+
+        })();
+    </script>
+</body>
+</html>
