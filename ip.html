@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebRTC 泄露检测 · IP规则测试</title>
+    <title>WebRTC 泄露检测 · AB页规则测试</title>
     <style>
         * {
             box-sizing: border-box;
@@ -20,7 +20,7 @@
             padding: 20px;
         }
         .card {
-            max-width: 720px;
+            max-width: 760px;
             width: 100%;
             background: #fff;
             border-radius: 24px;
@@ -110,25 +110,6 @@
             background: #eef3fa;
             padding: 2px 12px;
             border-radius: 20px;
-        }
-        .risk-tag {
-            display: inline-block;
-            padding: 4px 16px;
-            border-radius: 40px;
-            font-weight: 500;
-            font-size: 14px;
-        }
-        .risk-tag.safe {
-            background: #dff0d8;
-            color: #2b6e3b;
-        }
-        .risk-tag.danger {
-            background: #f8dddd;
-            color: #a12b2b;
-        }
-        .risk-tag.warn {
-            background: #fff3d6;
-            color: #8a6d1f;
         }
         .api-section {
             margin-top: 20px;
@@ -224,9 +205,9 @@
     <div class="card" id="app">
         <h1>
             🔍 WebRTC 泄露检测
-            <small>IP规则测试</small>
+            <small>AB页规则测试</small>
         </h1>
-        <div class="sub">依据规则：若本地IP与公网IP不一致，或公网IP为数据中心/VPN/代理，则判定为“审核/爬虫” → 留在A页</div>
+        <div class="sub">规则：若本地IP与公网IP不一致（且泄露公网IP），或公网IP为机房/VPN/代理，则判定为“审核/爬虫” → 留在A页</div>
 
         <!-- 公网IP -->
         <div class="ip-box">
@@ -252,7 +233,7 @@
             </div>
         </div>
 
-        <!-- 公网IP 详细信息 (来自 ipapi.is) -->
+        <!-- 公网IP 详细信息 (来自 ipapi.is，带降级) -->
         <div class="api-section" id="ipapiSection">
             <div style="font-weight:600; margin-bottom:8px;">📊 公网IP 威胁情报 (ipapi.is)</div>
             <div id="ipapiContent">
@@ -294,50 +275,74 @@
             const actionDisplay = document.getElementById('actionDisplay');
             const refreshBtn = document.getElementById('refreshBtn');
 
-            // 辅助：显示状态
-            function setLoading(loading) {
-                document.getElementById('app').classList.toggle('loading', loading);
+            // ----- 容错机制 1: 多备用IP接口 (含国内节点) -----
+            async function fetchPublicIP() {
+                const providers = [
+                    { url: 'https://api.ipify.org?format=json', parser: d => d.ip, timeout: 3000 },
+                    { url: 'https://myip.top/json', parser: d => d.ip, timeout: 3000 },        // 国内节点，极快
+                    { url: 'https://httpbin.org/ip', parser: d => d.origin, timeout: 3000 },
+                    { url: 'https://api.ip.sb/geoip', parser: d => d.ip, timeout: 3000 }
+                ];
+
+                for (let p of providers) {
+                    try {
+                        const controller = new AbortController();
+                        const timer = setTimeout(() => controller.abort(), p.timeout);
+                        
+                        const res = await fetch(p.url, { 
+                            signal: controller.signal,
+                            headers: { 'Accept': 'application/json' }
+                        });
+                        clearTimeout(timer);
+                        
+                        if (!res.ok) continue;
+                        const data = await res.json();
+                        const ip = p.parser(data);
+                        if (ip && ip !== '0.0.0.0' && !ip.startsWith('127.')) {
+                            console.log(`✅ 通过 ${p.url} 获取到IP: ${ip}`);
+                            return ip;
+                        }
+                    } catch (e) {
+                        console.warn(`⏳ 备用接口 ${p.url} 失败:`, e.message);
+                        // 继续尝试下一个
+                    }
+                }
+                throw new Error('所有IP获取接口均不可用，请检查网络连接');
             }
 
-            // 获取公网IP (ipify)
-            function fetchPublicIP() {
-                return fetch('https://api.ipify.org?format=json')
-                    .then(res => {
-                        if (!res.ok) throw new Error('ipify 请求失败');
-                        return res.json();
-                    })
-                    .then(data => data.ip);
+            // ----- 容错机制 2: 带降级的 ipapi.is 查询 (国内无法访问则跳过) -----
+            async function fetchIpapi(ip) {
+                try {
+                    const controller = new AbortController();
+                    const timer = setTimeout(() => controller.abort(), 5000); // 5秒超时
+                    
+                    const res = await fetch(`https://api.ipapi.is/?q=${encodeURIComponent(ip)}`, {
+                        signal: controller.signal
+                    });
+                    clearTimeout(timer);
+                    if (!res.ok) throw new Error('HTTP Error');
+                    return await res.json();
+                } catch (e) {
+                    console.warn('⚠️ ipapi.is 查询失败（可能被墙），降级忽略此情报', e.message);
+                    return null; // 降级返回 null，不影响主流程
+                }
             }
 
-            // 获取 WebRTC 本地IP (兼容多种浏览器)
+            // ----- WebRTC 获取本地IP (不变) -----
             function getWebRTCIPs() {
                 return new Promise((resolve) => {
                     const ips = [];
-                    const pc = new RTCPeerConnection({
-                        iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
-                    });
+                    const pc = new RTCPeerConnection({ iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] });
                     pc.createDataChannel('');
-
-                    pc.createOffer()
-                        .then(offer => pc.setLocalDescription(offer))
-                        .catch(() => {});
-
+                    pc.createOffer().then(offer => pc.setLocalDescription(offer)).catch(() => {});
+                    
                     pc.onicecandidate = (event) => {
                         if (!event || !event.candidate) {
-                            // 收集完毕
                             pc.close();
-                            // 去重并过滤 IPv4 / IPv6 (保留IPv4)
                             const ipv4Set = new Set();
                             ips.forEach(ip => {
-                                // 过滤掉 0.0.0.0 和 空
                                 if (ip && ip !== '0.0.0.0' && ip !== '::' && ip !== '::1') {
-                                    // 简单过滤私有 IPv4 和公网 IPv4
-                                    if (ip.includes(':')) {
-                                        // IPv6 暂时忽略，但保留显示
-                                        ipv4Set.add(ip);
-                                    } else {
-                                        ipv4Set.add(ip);
-                                    }
+                                    ipv4Set.add(ip);
                                 }
                             });
                             resolve([...ipv4Set]);
@@ -345,18 +350,14 @@
                         }
                         const candidate = event.candidate.candidate;
                         if (!candidate) return;
-                        // 提取IP地址
                         const ipRegex = /([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})|([a-fA-F0-9:]+)/g;
                         const match = candidate.match(ipRegex);
                         if (match) {
                             match.forEach(ip => {
-                                if (ip && !ips.includes(ip)) {
-                                    ips.push(ip);
-                                }
+                                if (ip && !ips.includes(ip)) ips.push(ip);
                             });
                         }
                     };
-                    // 超时处理（以防无candidate）
                     setTimeout(() => {
                         pc.close();
                         if (ips.length === 0) ips.push('无法获取');
@@ -365,16 +366,6 @@
                 });
             }
 
-            // 查询 ipapi.is
-            function fetchIpapi(ip) {
-                return fetch(`https://api.ipapi.is/?q=${encodeURIComponent(ip)}`)
-                    .then(res => {
-                        if (!res.ok) throw new Error('ipapi.is 请求失败');
-                        return res.json();
-                    });
-            }
-
-            // 判断公网IP是否为私有（其实不会，但以防）
             function isPrivateIP(ip) {
                 const parts = ip.split('.');
                 if (parts.length === 4) {
@@ -386,15 +377,21 @@
                 return false;
             }
 
-            // 主检测流程
+            // ----- 主流程 -----
             async function runDetection() {
-                setLoading(true);
+                document.getElementById('app').classList.add('loading');
+                // 重置显示
+                publicIpEl.textContent = '获取中...';
+                publicIpTypeEl.textContent = '检测中...';
+                ipapiStatus.textContent = '⏳ 连接中...';
+                
                 try {
-                    // 1. 获取公网IP
+                    // 1. 获取公网IP (带容错重试)
                     const publicIP = await fetchPublicIP();
                     publicIpEl.textContent = publicIP;
+                    publicIpTypeEl.textContent = '✅ 已获取';
 
-                    // 2. 获取WebRTC本地IP
+                    // 2. WebRTC本地IP
                     const localIPs = await getWebRTCIPs();
                     if (localIPs.length === 0 || localIPs[0] === '无法获取') {
                         localIpListEl.innerHTML = '<span class="item">未检测到</span>';
@@ -404,101 +401,62 @@
                         localCountEl.textContent = localIPs.length;
                     }
 
-                    // 3. 对比公网IP与WebRTC本地IP
-                    // 注意：本地IP可能包含私有IP，也可能包含公网IP（如果未经过NAT）
-                    // 规则：如果所有本地IP中没有一个与公网IP相同，则判定为“不一致”（可能代理/VPN）
-                    let match = false;
-                    if (localIPs.length > 0 && publicIP) {
-                        match = localIPs.some(ip => ip === publicIP);
-                    }
-
-                    // 但如果本地IP都是私有IP（如192.168.x.x），而公网是公网IP，则肯定不一致，但这是正常的NAT环境，不能判定为代理
-                    // 更合理的判断：如果本地IP中有公网IP且与公网IP不同，则说明可能代理；如果只有私有IP，则无法判断，需要结合其他信息。
-                    // 这里我们简单显示匹配结果，并标记“可能需要人工判断”
+                    // 3. 对比逻辑 (WebRTC检测)
+                    let match = localIPs.some(ip => ip === publicIP);
                     let compareText = '';
                     let compareRisk = 'safe';
+                    const hasPublicLocal = localIPs.some(ip => !isPrivateIP(ip) && ip !== '127.0.0.1' && ip !== '::1');
+
                     if (match) {
                         compareText = '✅ 公网IP与WebRTC本地IP一致（直连）';
                         compareRisk = 'safe';
                     } else {
-                        if (localIPs.some(ip => !isPrivateIP(ip) && ip !== '127.0.0.1' && ip !== '::1')) {
-                            // 存在非私有IP（公网IP）但不匹配 => 可能代理
-                            compareText = '⚠️ 公网IP与WebRTC本地IP不同，且本地包含公网IP，疑似代理/VPN';
+                        if (hasPublicLocal) {
+                            compareText = '⚠️ 公网IP与本地IP不同，且本地包含公网IP，疑似代理/VPN';
                             compareRisk = 'danger';
                         } else {
-                            compareText = 'ℹ️ 公网IP与WebRTC本地IP不同（本地仅私有IP），属于正常NAT环境，无法判断代理';
+                            compareText = 'ℹ️ 公网IP与本地IP不同（本地仅私有IP），正常NAT环境';
                             compareRisk = 'warn';
                         }
                     }
                     compareDetailEl.innerHTML = `<span>${compareText}</span>`;
 
-                    // 4. 查询 ipapi.is 获取公网IP情报
-                    let ipapiData = null;
-                    try {
-                        ipapiData = await fetchIpapi(publicIP);
-                    } catch (e) {
-                        ipapiStatus.textContent = '❌ 查询失败';
-                        console.warn('ipapi.is 失败', e);
-                    }
-
-                    if (ipapiData) {
-                        const {
-                            country_code,
-                            isp,
-                            is_datacenter,
-                            is_vpn,
-                            is_proxy,
-                            is_tor,
-                            is_crawler
-                        } = ipapiData;
-                        ipapiStatus.textContent = '✅ 成功';
-                        ipapiCountry.textContent = country_code || '-';
-                        ipapiIsp.textContent = isp || '-';
-                        ipapiDatacenter.textContent = is_datacenter ? '🔴 是' : '✅ 否';
-                        ipapiVpn.textContent = (is_vpn || is_proxy) ? '🔴 是 (VPN/代理)' : '✅ 否';
-                        ipapiTor.textContent = (is_tor || is_crawler) ? '🔴 是 (Tor/爬虫)' : '✅ 否';
-                    } else {
-                        ipapiStatus.textContent = '⏳ 未获取到数据';
-                    }
-
-                    // 5. 综合裁决：跳转B页还是留在A页？
-                    // 规则：如果 (公网IP与本地IP不一致 且 本地包含公网IP) 或者 ipapi检测到 is_datacenter 或 is_vpn 或 is_proxy 或 is_tor 或 is_crawler
-                    // 则留在A页（不跳转），否则跳转B页
-                    let shouldRedirect = true; // 默认跳转
+                    // 4. 查询 ipapi.is (带降级，不通则跳过)
+                    let shouldRedirect = true;
                     let reasons = [];
 
-                    // 检查WebRTC不一致且本地有公网IP（非私有）
-                    const hasPublicLocal = localIPs.some(ip => !isPrivateIP(ip) && ip !== '127.0.0.1' && ip !== '::1');
+                    // WebRTC 判定（如果本地有公网IP且不匹配，直接拉黑）
                     if (!match && hasPublicLocal) {
                         shouldRedirect = false;
-                        reasons.push('WebRTC本地IP包含公网IP但与当前公网IP不一致（疑似代理）');
+                        reasons.push('WebRTC泄露公网IP与出口IP不一致（代理特征）');
                     }
 
-                    // 检查 ipapi 结果
+                    // 尝试获取情报（如果被墙，ipapiData 为 null，不影响跳转，只依赖WebRTC）
+                    const ipapiData = await fetchIpapi(publicIP);
                     if (ipapiData) {
-                        if (ipapiData.is_datacenter) {
-                            shouldRedirect = false;
-                            reasons.push('公网IP位于数据中心');
-                        }
-                        if (ipapiData.is_vpn || ipapiData.is_proxy) {
-                            shouldRedirect = false;
-                            reasons.push('公网IP被识别为VPN/代理');
-                        }
-                        if (ipapiData.is_tor || ipapiData.is_crawler) {
-                            shouldRedirect = false;
-                            reasons.push('公网IP被识别为Tor/爬虫');
-                        }
+                        ipapiStatus.textContent = '✅ 成功';
+                        ipapiCountry.textContent = ipapiData.country_code || '-';
+                        ipapiIsp.textContent = ipapiData.isp || '-';
+                        ipapiDatacenter.textContent = ipapiData.is_datacenter ? '🔴 是' : '✅ 否';
+                        ipapiVpn.textContent = (ipapiData.is_vpn || ipapiData.is_proxy) ? '🔴 是' : '✅ 否';
+                        ipapiTor.textContent = (ipapiData.is_tor || ipapiData.is_crawler) ? '🔴 是' : '✅ 否';
+
+                        // 补充情报逻辑
+                        if (ipapiData.is_datacenter) { shouldRedirect = false; reasons.push('公网IP位于数据中心'); }
+                        if (ipapiData.is_vpn || ipapiData.is_proxy) { shouldRedirect = false; reasons.push('公网IP为VPN/代理'); }
+                        if (ipapiData.is_tor || ipapiData.is_crawler) { shouldRedirect = false; reasons.push('公网IP为Tor/爬虫'); }
+                    } else {
+                        ipapiStatus.textContent = '⏭️ 降级跳过 (网络限制)';
+                        ipapiCountry.textContent = '未获取';
+                        ipapiIsp.textContent = '未获取';
+                        ipapiDatacenter.textContent = '⏭️ 跳过';
+                        ipapiVpn.textContent = '⏭️ 跳过';
+                        ipapiTor.textContent = '⏭️ 跳过';
                     }
 
-                    // 如果公网IP是私有IP（不太可能），但以防
-                    if (isPrivateIP(publicIP)) {
-                        shouldRedirect = false;
-                        reasons.push('公网IP为私有地址（异常）');
-                    }
-
-                    // 显示结果
-                    const verdictEl = document.getElementById('verdict');
+                    // 最终裁决
                     const actionEl = document.getElementById('actionDisplay');
+                    const verdictEl = document.getElementById('verdict');
                     if (shouldRedirect) {
                         actionEl.innerHTML = '✅ 跳转到 <strong>B页</strong>（真实用户）';
                         actionEl.className = 'action green';
@@ -508,24 +466,22 @@
                         actionEl.className = 'action red';
                         verdictEl.style.background = '#fde8e8';
                         if (reasons.length) {
-                            const reasonText = reasons.join('；');
-                            actionEl.innerHTML += `<div style="font-size:14px;font-weight:400;margin-top:8px;color:#5e4f4f;">原因：${reasonText}</div>`;
+                            actionEl.innerHTML += `<div style="font-size:14px;font-weight:400;margin-top:8px;color:#5e4f4f;">原因：${reasons.join('；')}</div>`;
                         }
                     }
 
                 } catch (error) {
-                    console.error('检测过程出错', error);
-                    document.getElementById('compareDetail').innerHTML = `<span>❌ 检测出错: ${error.message}</span>`;
-                    document.getElementById('actionDisplay').textContent = '⚠️ 检测失败，请重试';
+                    console.error('检测失败', error);
+                    document.getElementById('compareDetail').innerHTML = `<span>❌ 检测失败: ${error.message}</span>`;
+                    document.getElementById('actionDisplay').textContent = '⚠️ 请检查网络或刷新重试';
+                    publicIpEl.textContent = '获取失败';
                 } finally {
-                    setLoading(false);
+                    document.getElementById('app').classList.remove('loading');
                 }
             }
 
-            // 初始化
             refreshBtn.addEventListener('click', runDetection);
             runDetection();
-
         })();
     </script>
 </body>
