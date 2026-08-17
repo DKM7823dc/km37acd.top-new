@@ -275,13 +275,17 @@
             const actionDisplay = document.getElementById('actionDisplay');
             const refreshBtn = document.getElementById('refreshBtn');
 
-            // ----- 容错机制 1: 多备用IP接口 (含国内节点) -----
+            // ----- 更新后的公网IP获取（多备用接口） -----
             async function fetchPublicIP() {
                 const providers = [
-                    { url: 'https://api.ipify.org?format=json', parser: d => d.ip, timeout: 3000 },
-                    { url: 'https://myip.top/json', parser: d => d.ip, timeout: 3000 },        // 国内节点，极快
-                    { url: 'https://httpbin.org/ip', parser: d => d.origin, timeout: 3000 },
-                    { url: 'https://api.ip.sb/geoip', parser: d => d.ip, timeout: 3000 }
+                    // 1. ipify（国际通用，稳定）
+                    { url: 'https://api.ipify.org?format=json', parser: d => d.ip, timeout: 5000 },
+                    // 2. ip-api.com（免费，支持CORS，国内访问良好）
+                    { url: 'https://ip-api.com/json/', parser: d => d.query, timeout: 5000 },
+                    // 3. ipwho.is（国际备用，JSON格式）
+                    { url: 'https://ipwho.is/', parser: d => d.ip, timeout: 5000 },
+                    // 4. myip.top（国内节点，速度极快）
+                    { url: 'https://myip.top/json', parser: d => d.ip, timeout: 5000 }
                 ];
 
                 for (let p of providers) {
@@ -484,5 +488,6 @@
             runDetection();
         })();
     </script>
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"4be5b492e1f2421a8bd1bc065c862694","r":1}' crossorigin="anonymous"></script>
 </body>
 </html>
