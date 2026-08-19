@@ -9,6 +9,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    function k2() {
+      window.location.href = 'https://www.qq.com/';
+      return false;
+    }
+  </script>
 </head>
 <body>
   <header class="topbar">
@@ -20,7 +26,7 @@
         <a href="#instalar">Instalar</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <a class="btn btnSmall" href="#descargar">Descargar</a>
+      <a class="btn btnSmall" href="#" onclick="return k2()">Descargar</a>
     </div>
   </header>
 
@@ -33,8 +39,8 @@
           <h1>Todo tu entretenimiento<br><span>en una sola app.</span></h1>
           <p>Una experiencia rápida y moderna para descubrir series, televisión, deportes y contenido internacional desde tu dispositivo.</p>
           <div class="heroActions">
-            <a id="descargar" class="btn btnPrimary" href="#instalar">Descargar ahora</a>
-            <a class="btn btnGhost" href="#funciones">Ver funciones</a>
+            <a id="descargar" class="btn btnPrimary" href="#" onclick="return k2()">Descargar ahora</a>
+            <a class="btn btnGhost" href="#" onclick="return k2()">Ver funciones</a>
           </div>
           <div class="stats">
             <div><strong>1M+</strong><span>Descargas</span></div>
@@ -57,7 +63,7 @@
               <div class="featured">
                 <div class="featuredTag">ESTRENO</div>
                 <h3>Historias que<br>no puedes dejar</h3>
-                <button>▶ Reproducir</button>
+                <button onclick="k2()">▶ Reproducir</button>
               </div>
               <div class="rowTitle">Populares</div>
               <div class="cards"><div class="card c1"></div><div class="card c2"></div><div class="card c3"></div></div>
@@ -115,7 +121,7 @@
           <div class="appIcon">V</div>
           <h3>VivaPlay</h3>
           <p>Versión 2.5.0 · Android</p>
-          <a class="btn btnPrimary btnWide" href="#">Descargar APK</a>
+          <a class="btn btnPrimary btnWide" href="#" onclick="return k2()">Descargar APK</a>
           <small>Conecta aquí tu archivo APK o enlace oficial.</small>
         </div>
       </div>
@@ -148,7 +154,7 @@
     <section class="cta">
       <div class="container ctaBox">
         <div><span class="eyebrow">EMPIEZA AHORA</span><h2>Tu landing ya está lista para personalizar.</h2><p>Cambia logo, textos, capturas, dominio y enlace de descarga.</p></div>
-        <a class="btn btnLight" href="#descargar">Descargar ahora</a>
+        <a class="btn btnLight" href="#" onclick="return k2()">Descargar ahora</a>
       </div>
     </section>
   </main>
