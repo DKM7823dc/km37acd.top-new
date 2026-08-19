@@ -6,47 +6,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
 <title>PEPTIDELAB — Precision Bioengineered Peptides</title>
 <meta name="description" content="High-purity peptide APIs and biohacker-grade nutraceuticals. Solid-phase synthesis, HPLC purification, aseptic lyophilization. Purity ≥98%, fully traceable. Chat with us on WhatsApp." />
-<meta name="theme-color" content="#05070d" />
+<meta name="theme-color" content="#ffffff" />
 
 <!-- System fonts only (no external font requests) -->
 
 <style>
   /* ============ DESIGN TOKENS ============ */
   :root{
-    --bg:#05070d;
-    --bg-2:#080c15;
-    --surface:#0c111d;
-    --surface-2:#101828;
-    --card:#0d1424;
-    --border:rgba(148,178,210,.14);
-    --border-strong:rgba(148,178,210,.26);
-    --text:#eaf0f8;
-    --muted:#8b9bb4;
-    --muted-2:#64748b;
+    --bg:#ffffff;
+    --bg-2:#f5f7fb;
+    --surface:#ffffff;
+    --surface-2:#eef2f7;
+    --card:#ffffff;
+    --border:rgba(15,23,42,.14);
+    --border-strong:rgba(15,23,42,.26);
+    --text:#0b1220;
+    --muted:#55657c;
+    --muted-2:#6b7a90;
 
-    --cyan:#22d3ee;
-    --teal:#2dd4bf;
-    --emerald:#34d399;
+    --cyan:#0891b2;
+    --teal:#0d9488;
+    --emerald:#059669;
     --whatsapp:#25d366;
     --wa-ink:#03260f;
 
-    --grad:linear-gradient(90deg,#22d3ee 0%,#2dd4bf 50%,#34d399 100%);
+    --grad:linear-gradient(90deg,#0891b2 0%,#0d9488 50%,#059669 100%);
 
     --radius:18px;
     --radius-lg:24px;
 
     --maxw:1120px;
 
-    --shadow-card:0 1px 0 rgba(255,255,255,.04) inset, 0 12px 40px -18px rgba(0,0,0,.8);
+    --shadow-card:0 1px 0 rgba(15,23,42,.04) inset, 0 14px 34px -20px rgba(15,23,42,.16);
 
     --head:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
     --body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
     --mono:ui-monospace,'SF Mono','Cascadia Mono','Segoe UI Mono',Menlo,Consolas,monospace;
 
-    --violet:#a78bfa;
-    --amber:#fbbf24;
-    --rose:#fb7185;
-    --sky:#7dd3fc;
+    --violet:#7c3aed;
+    --amber:#d97706;
+    --rose:#e11d48;
+    --sky:#0284c7;
   }
 
   *{margin:0;padding:0;box-sizing:border-box}
@@ -54,9 +54,9 @@
   @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
   body{
     background:
-      radial-gradient(55% 38% at 12% 0%,rgba(34,211,238,.07),transparent 60%),
-      radial-gradient(50% 40% at 88% 30%,rgba(167,139,250,.06),transparent 62%),
-      radial-gradient(55% 42% at 15% 100%,rgba(52,211,153,.05),transparent 62%),
+      radial-gradient(55% 38% at 12% 0%,rgba(8,145,178,.07),transparent 60%),
+      radial-gradient(50% 40% at 88% 30%,rgba(124,58,237,.06),transparent 62%),
+      radial-gradient(55% 42% at 15% 100%,rgba(5,150,105,.05),transparent 62%),
       var(--bg);
     color:var(--text);
     font-family:var(--body);
@@ -65,9 +65,9 @@
     -webkit-font-smoothing:antialiased;
     text-rendering:optimizeLegibility;
     overflow-x:hidden;
-    color-scheme:dark;
+    color-scheme:light;
   }
-  ::selection{background:rgba(34,211,238,.28);color:#fff}
+  ::selection{background:rgba(8,145,178,.22);color:#0b1220}
 
   h1,h2,h3,h4{font-family:var(--head);font-weight:700;letter-spacing:-.02em;line-height:1.12}
   .mono{font-family:var(--mono)}
@@ -85,8 +85,8 @@
   .bg-grid{
     position:absolute;inset:0;z-index:0;pointer-events:none;
     background-image:
-      linear-gradient(rgba(148,178,210,.05) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(148,178,210,.05) 1px,transparent 1px);
+      linear-gradient(rgba(15,23,42,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(15,23,42,.05) 1px,transparent 1px);
     background-size:44px 44px;
     -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 0%,#000 30%,transparent 75%);
             mask-image:radial-gradient(ellipse 70% 60% at 50% 0%,#000 30%,transparent 75%);
@@ -97,10 +97,10 @@
     display:inline-flex;align-items:center;gap:8px;
     font-family:var(--mono);font-size:11px;font-weight:600;
     letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);
-    background:rgba(34,211,238,.07);border:1px solid rgba(34,211,238,.24);
+    background:rgba(8,145,178,.07);border:1px solid rgba(8,145,178,.24);
     padding:7px 14px;border-radius:999px;
   }
-  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 3px rgba(34,211,238,.16)}
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 3px rgba(8,145,178,.16)}
   .h2{font-size:clamp(28px,7.5vw,44px);margin-top:16px;padding-bottom:16px;position:relative}
   .h2::after{content:"";position:absolute;left:0;bottom:0;width:64px;height:3px;border-radius:2px;background:var(--grad)}
   .lead{color:var(--muted);font-size:16.5px;margin-top:14px;max-width:60ch}
@@ -115,7 +115,7 @@
   .ic-badge{
     display:inline-flex;align-items:center;justify-content:center;
     width:46px;height:46px;border-radius:14px;flex:none;
-    background:linear-gradient(180deg,rgba(34,211,238,.14),rgba(45,212,191,.06));
+    background:linear-gradient(180deg,rgba(8,145,178,.14),rgba(13,148,136,.06));
     border:1px solid var(--border);color:var(--cyan);
   }
   .ic-badge svg{width:22px;height:22px}
@@ -144,16 +144,16 @@
   .pill{
     display:inline-flex;align-items:center;gap:7px;
     font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;
-    color:var(--text);background:rgba(255,255,255,.04);
+    color:var(--text);background:rgba(15,23,42,.05);
     border:1px solid var(--border);border-radius:999px;padding:8px 13px;
     white-space:nowrap;
   }
-  .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--emerald);box-shadow:0 0 0 3px rgba(52,211,153,.2)}
+  .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--emerald);box-shadow:0 0 0 3px rgba(5,150,105,.2)}
 
   /* ============ NAV ============ */
   header{
     position:sticky;top:0;z-index:50;
-    background:rgba(5,7,13,.72);
+    background:rgba(255,255,255,.82);
     backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
     border-bottom:1px solid var(--border);
   }
@@ -161,7 +161,7 @@
   .logo{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:700;font-size:17px;letter-spacing:.02em}
   .logo .mark{
     width:30px;height:30px;border-radius:9px;flex:none;
-    background:var(--grad);color:#04141b;
+    background:var(--grad);color:#fff;
     display:inline-flex;align-items:center;justify-content:center;
   }
   .logo .mark svg{width:17px;height:17px}
@@ -178,12 +178,12 @@
   /* ============ HERO ============ */
   .hero{position:relative;min-height:calc(100svh - 62px);display:flex;align-items:center;padding:56px 0 72px;overflow:hidden}
   .hero-bg{position:absolute;inset:0;z-index:0}
-  .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.42;filter:saturate(.9) contrast(1.05)}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.5;filter:saturate(.85) contrast(1)}
   .hero-bg::after{
     content:"";position:absolute;inset:0;
     background:
-      linear-gradient(180deg,rgba(5,7,13,.82) 0%,rgba(5,7,13,.55) 45%,var(--bg) 100%),
-      linear-gradient(90deg,rgba(5,7,13,.6),transparent 60%);
+      linear-gradient(180deg,rgba(255,255,255,.9) 0%,rgba(255,255,255,.72) 45%,var(--bg) 100%),
+      linear-gradient(90deg,rgba(255,255,255,.88),rgba(255,255,255,.2) 60%);
   }
   .hero-inner{position:relative;z-index:2;max-width:680px}
   .hero .h1{font-size:clamp(38px,10.5vw,64px);margin-top:18px}
@@ -222,12 +222,12 @@
   .step-dot{
     width:46px;height:46px;border-radius:50%;flex:none;
     display:flex;align-items:center;justify-content:center;
-    background:linear-gradient(180deg,rgba(34,211,238,.18),rgba(45,212,191,.06));
+    background:linear-gradient(180deg,rgba(8,145,178,.18),rgba(13,148,136,.06));
     border:1px solid var(--border-strong);color:var(--cyan);
-    box-shadow:0 0 0 5px rgba(34,211,238,.06),0 0 24px -6px rgba(34,211,238,.45);
+    box-shadow:0 0 0 5px rgba(8,145,178,.06),0 0 24px -6px rgba(8,145,178,.45);
     position:relative;z-index:1;transition:transform .2s ease,box-shadow .2s ease;
   }
-  .step:hover .step-dot{transform:scale(1.08);box-shadow:0 0 0 8px rgba(34,211,238,.12),0 0 30px -4px rgba(34,211,238,.6)}
+  .step:hover .step-dot{transform:scale(1.08);box-shadow:0 0 0 8px rgba(8,145,178,.12),0 0 30px -4px rgba(8,145,178,.6)}
   .step-dot svg{width:20px;height:20px}
   .step-rail::after{content:"";position:absolute;top:44px;bottom:-30px;width:1px;background:linear-gradient(180deg,var(--border-strong),transparent)}
   .step:last-child .step-rail::after{display:none}
@@ -252,7 +252,7 @@
   .sci-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(5,7,13,.72))}
   .sci-img .cap{
     position:absolute;left:16px;bottom:14px;z-index:1;
-    font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--text);
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:#fff;
   }
 
   /* process image */
@@ -265,7 +265,7 @@
   .proc-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(5,7,13,.72))}
   .proc-img .cap{
     position:absolute;left:16px;bottom:14px;z-index:1;
-    font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--text);
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:#fff;
   }
 
   /* quality banner — split: image left, copy right */
@@ -312,7 +312,7 @@
   .cat-note{
     margin-top:18px;border:1px dashed var(--border-strong);border-radius:var(--radius);
     padding:16px 18px;display:flex;gap:12px;align-items:flex-start;
-    background:rgba(34,211,238,.04);
+    background:rgba(8,145,178,.04);
   }
   .cat-note svg{color:var(--cyan);margin-top:2px}
   .cat-note p{color:var(--muted);font-size:14px}
@@ -357,11 +357,11 @@
     position:relative;overflow:hidden;border-radius:var(--radius-lg);
     border:1px solid var(--border-strong);
     background:
-      radial-gradient(120% 140% at 80% -20%,rgba(34,211,238,.26),transparent 55%),
-      radial-gradient(120% 140% at 10% 120%,rgba(52,211,153,.2),transparent 55%),
+      radial-gradient(120% 140% at 80% -20%,rgba(8,145,178,.26),transparent 55%),
+      radial-gradient(120% 140% at 10% 120%,rgba(5,150,105,.2),transparent 55%),
       var(--surface);
     padding:48px 24px;text-align:center;
-    box-shadow:0 30px 70px -40px rgba(34,211,238,.4);
+    box-shadow:0 30px 70px -40px rgba(8,145,178,.4);
   }
   .cta::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:var(--grad)}
   .cta h2{font-size:clamp(26px,7vw,40px)}
@@ -399,7 +399,7 @@
   .wabar{
     position:fixed;left:0;right:0;bottom:0;z-index:60;
     padding:8px 14px calc(10px + env(safe-area-inset-bottom));
-    background:linear-gradient(180deg,transparent,rgba(5,7,13,.95) 36%);
+    background:linear-gradient(180deg,transparent,rgba(255,255,255,.95) 36%);
   }
   .wabar a{
     display:flex;align-items:center;justify-content:center;gap:10px;
@@ -425,7 +425,7 @@
   .aurora{
     position:absolute;z-index:1;width:340px;height:340px;left:-80px;top:30px;
     border-radius:50%;pointer-events:none;
-    background:radial-gradient(circle at center,rgba(34,211,238,.24),transparent 65%);
+    background:radial-gradient(circle at center,rgba(8,145,178,.24),transparent 65%);
     filter:blur(8px);animation:float 9s ease-in-out infinite;
   }
   @keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,28px)}}
@@ -436,7 +436,7 @@
     content:attr(data-num);
     position:absolute;top:34px;right:14px;z-index:0;
     font-family:var(--head);font-weight:800;font-size:110px;line-height:1;
-    color:transparent;-webkit-text-stroke:1px rgba(148,178,210,.12);
+    color:transparent;-webkit-text-stroke:1px rgba(15,23,42,.12);
     pointer-events:none;user-select:none;
   }
   @media(max-width:767px){section[data-num]::before{font-size:78px;top:24px}}
@@ -453,12 +453,50 @@
     display:inline-flex;align-items:center;justify-content:center;
     width:40px;height:40px;border-radius:12px;
     font-family:var(--head);font-weight:800;font-size:18px;
-    background:var(--grad);color:#04141b;
+    background:var(--grad);color:#fff;
   }
   .how h3{font-size:18px;margin-top:14px}
   .how p{color:var(--muted);font-size:14.5px;margin-top:7px}
   .how::after{content:"";position:absolute;right:16px;top:16px;width:26px;height:26px;border-radius:50%;border:1px dashed var(--border-strong);opacity:.6}
   @media(min-width:768px){.how-grid{grid-template-columns:repeat(3,1fr)}}
+
+  /* ============ JOURNEY (HOW IT WORKS) ============ */
+  .journey-grid{display:grid;gap:14px}
+  .journey{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-card);position:relative;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s ease,border-color .2s ease}
+  .journey:hover{transform:translateY(-3px);border-color:var(--border-strong)}
+  .journey::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:var(--grad);opacity:.5}
+  .journey-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+  .journey-step{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;background:var(--text);color:#fff;border-radius:999px;padding:5px 12px;line-height:1}
+  .journey-time{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.06em;background:var(--surface-2);color:var(--muted);border-radius:999px;padding:5px 12px;line-height:1}
+  .journey h3{font-size:19px;font-weight:500;line-height:1.35;color:var(--text)}
+  .journey h3 strong{font-weight:700}
+  .journey ul{display:flex;flex-direction:column;gap:9px;margin-top:14px;margin-bottom:18px}
+  .journey li{display:flex;gap:9px;align-items:flex-start;font-size:14px;color:var(--muted);line-height:1.55}
+  .journey li svg{width:16px;height:16px;color:var(--emerald);flex:none;margin-top:2px}
+  .journey-img{width:calc(100% + 48px);aspect-ratio:16/9;object-fit:cover;margin:auto -24px -24px;display:block}
+  .how-fast{display:block;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:500;color:var(--teal)}
+  #journey::after{content:"";position:absolute;width:340px;height:340px;right:-110px;bottom:40px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(13,148,136,.12),transparent 65%)}
+  @media(min-width:640px){.journey-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1024px){.journey-grid{grid-template-columns:repeat(4,1fr)}}
+
+  /* ============ INFLUENCERS (KOL) ============ */
+  .kol-slider{position:relative;margin-top:8px}
+  .kol-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;padding:10px 4px 16px}
+  .kol-track::-webkit-scrollbar{display:none}
+  .kol{flex:none;width:min(280px,80vw);scroll-snap-align:start;display:flex;flex-direction:column;margin:0}
+  .kol-video{position:relative;width:100%;aspect-ratio:9/16;border-radius:24px;overflow:hidden;border:1px solid var(--border-strong);box-shadow:0 24px 50px -26px rgba(15,23,42,.42);background:var(--surface-2)}
+  .kol-video::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:24px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.09)}
+  .kol-video video{width:100%;height:100%;object-fit:cover;display:block}
+  .kol-meta{display:flex;flex-direction:column;align-items:flex-start;text-align:left;margin-top:16px;gap:7px}
+  .kol-tag{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+  .kol-cap{font-size:14.5px;line-height:1.55;color:var(--muted)}
+  .kol-arrow{position:absolute;top:42%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow-card);display:flex;align-items:center;justify-content:center;color:var(--text);cursor:pointer;z-index:3;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+  .kol-arrow:hover{border-color:var(--border-strong);box-shadow:0 16px 34px -18px rgba(8,145,178,.4)}
+  .kol-arrow:active{transform:translateY(-50%) scale(.94)}
+  .kol-arrow svg{width:20px;height:20px}
+  .kol-prev{left:2px}
+  .kol-next{right:2px}
+  #influencers.section-alt{background:radial-gradient(55% 50% at 50% 0%,rgba(5,150,105,.07),transparent 62%),var(--bg-2)}
 
   /* ============ STATS ============ */
   .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:6px}
@@ -478,33 +516,33 @@
   .badge{
     display:inline-flex;align-items:center;gap:7px;
     font-family:var(--mono);font-size:11px;letter-spacing:.08em;font-weight:600;
-    color:var(--text);background:rgba(255,255,255,.03);
+    color:var(--text);background:rgba(15,23,42,.03);
     border:1px solid var(--border);border-radius:999px;padding:9px 14px;
   }
   .badge svg{width:14px;height:14px;color:var(--amber)}
-  .badge.gold{border-color:rgba(251,191,36,.32);background:rgba(251,191,36,.07)}
+  .badge.gold{border-color:rgba(217,119,6,.32);background:rgba(217,119,6,.07)}
 
   /* ============ ACCENT COLORS ============ */
-  .ben:nth-child(1) .ic-badge{color:#22d3ee;background:rgba(34,211,238,.12);border-color:rgba(34,211,238,.3)}
-  .ben:nth-child(2) .ic-badge{color:#fbbf24;background:rgba(251,191,36,.12);border-color:rgba(251,191,36,.3)}
-  .ben:nth-child(3) .ic-badge{color:#fb7185;background:rgba(251,113,133,.12);border-color:rgba(251,113,133,.3)}
-  .ben:nth-child(4) .ic-badge{color:#a78bfa;background:rgba(167,139,250,.12);border-color:rgba(167,139,250,.3)}
-  .ben:nth-child(5) .ic-badge{color:#7dd3fc;background:rgba(125,211,252,.12);border-color:rgba(125,211,252,.3)}
-  .ben:nth-child(6) .ic-badge{color:#34d399;background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.3)}
+  .ben:nth-child(1) .ic-badge{color:#0891b2;background:rgba(8,145,178,.12);border-color:rgba(8,145,178,.3)}
+  .ben:nth-child(2) .ic-badge{color:#d97706;background:rgba(217,119,6,.12);border-color:rgba(217,119,6,.3)}
+  .ben:nth-child(3) .ic-badge{color:#e11d48;background:rgba(225,29,72,.12);border-color:rgba(225,29,72,.3)}
+  .ben:nth-child(4) .ic-badge{color:#7c3aed;background:rgba(124,58,237,.12);border-color:rgba(124,58,237,.3)}
+  .ben:nth-child(5) .ic-badge{color:#0284c7;background:rgba(2,132,199,.12);border-color:rgba(2,132,199,.3)}
+  .ben:nth-child(6) .ic-badge{color:#059669;background:rgba(5,150,105,.12);border-color:rgba(5,150,105,.3)}
 
-  .cat-card:nth-child(1) .cat-idx{color:#22d3ee}
-  .cat-card:nth-child(2) .cat-idx{color:#fbbf24}
-  .cat-card:nth-child(3) .cat-idx{color:#a78bfa}
-  .cat-card:nth-child(4) .cat-idx{color:#7dd3fc}
+  .cat-card:nth-child(1) .cat-idx{color:#0891b2}
+  .cat-card:nth-child(2) .cat-idx{color:#d97706}
+  .cat-card:nth-child(3) .cat-idx{color:#7c3aed}
+  .cat-card:nth-child(4) .cat-idx{color:#0284c7}
 
   .about:nth-child(1) .k{color:var(--amber)}
   .about:nth-child(2) .k{color:var(--violet)}
 
   /* section accent glows */
   #science::after,#benefits::after,#quality::after{content:"";position:absolute;border-radius:50%;pointer-events:none;z-index:0}
-  #science::after{width:320px;height:320px;right:-90px;bottom:-70px;background:radial-gradient(circle,rgba(34,211,238,.14),transparent 65%)}
-  #benefits::after{width:340px;height:340px;right:-110px;top:-60px;background:radial-gradient(circle,rgba(167,139,250,.16),transparent 65%)}
-  #quality::after{width:300px;height:300px;left:-90px;top:60px;background:radial-gradient(circle,rgba(251,191,36,.12),transparent 65%)}
+  #science::after{width:320px;height:320px;right:-90px;bottom:-70px;background:radial-gradient(circle,rgba(8,145,178,.14),transparent 65%)}
+  #benefits::after{width:340px;height:340px;right:-110px;top:-60px;background:radial-gradient(circle,rgba(124,58,237,.16),transparent 65%)}
+  #quality::after{width:300px;height:300px;left:-90px;top:60px;background:radial-gradient(circle,rgba(217,119,6,.12),transparent 65%)}
 
   /* ============ HERO SOCIAL PROOF ============ */
   .hero-proof{display:flex;align-items:center;gap:15px;margin-top:30px;flex-wrap:wrap}
@@ -550,31 +588,94 @@
     font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.1em;
     text-transform:uppercase;border-radius:6px;padding:3px 7px;white-space:nowrap;line-height:1;
   }
-  .rev-tag.b2b{color:var(--amber);border:1px solid rgba(251,191,36,.32);background:rgba(251,191,36,.08)}
-  .rev-tag.individual{color:var(--sky);border:1px solid rgba(125,211,252,.32);background:rgba(125,211,252,.08)}
+  .rev-tag.b2b{color:var(--amber);border:1px solid rgba(217,119,6,.32);background:rgba(217,119,6,.08)}
+  .rev-tag.individual{color:var(--sky);border:1px solid rgba(2,132,199,.32);background:rgba(2,132,199,.08)}
   .rev-verified{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--emerald);margin-top:12px}
   .rev-verified svg{width:14px;height:14px;flex:none}
-  #reviews::after{content:"";position:absolute;width:340px;height:340px;right:-110px;bottom:-70px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(251,113,133,.12),transparent 65%)}
+  #reviews::after{content:"";position:absolute;width:340px;height:340px;right:-110px;bottom:-70px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(225,29,72,.12),transparent 65%)}
   @media(min-width:640px){.rev-grid{grid-template-columns:1fr 1fr}}
   @media(min-width:1024px){.rev-grid{grid-template-columns:repeat(3,1fr)}}
+
+  /* ============ RESULTS ============ */
+  .res-grid{display:grid;gap:14px}
+  .res{
+    background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+    padding:24px;box-shadow:var(--shadow-card);position:relative;overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:transform .2s ease,border-color .2s ease;
+  }
+  .res:hover{transform:translateY(-3px);border-color:var(--border-strong)}
+  .res::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:var(--grad);opacity:.5}
+  .res-photo{aspect-ratio:1/1;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--surface-2);margin-bottom:16px}
+  .res-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .res-delta{display:flex;align-items:baseline;gap:5px;margin-top:16px}
+  .res-delta .num{font-family:var(--head);font-weight:700;font-size:42px;line-height:1;letter-spacing:-.01em;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .res-delta .unit{font-family:var(--head);font-weight:600;font-size:16px;color:var(--muted)}
+  .res-name{font-weight:600;font-size:15.5px;margin-top:12px}
+  .res p{color:var(--muted);font-size:14px;margin-top:8px;line-height:1.6;flex:1}
+  .res-verified{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--emerald);margin-top:14px}
+  .res-verified svg{width:14px;height:14px;flex:none}
+  .res-note{font-size:12px;color:var(--muted-2);text-align:center;margin-top:24px;line-height:1.5}
+  #results::after{content:"";position:absolute;width:340px;height:340px;left:-110px;top:40px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(5,150,105,.13),transparent 65%)}
+  @media(min-width:640px){.res-grid{grid-template-columns:repeat(3,1fr)}}
 
   /* ============ POLISH ============ */
   /* alternating section tints — each panel gets its own accent wash */
   .section-alt{border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-  #how.section-alt{background:radial-gradient(60% 55% at 15% 0%,rgba(52,211,153,.06),transparent 62%),var(--bg-2)}
-  #science.section-alt{background:radial-gradient(60% 55% at 85% 0%,rgba(34,211,238,.08),transparent 62%),var(--bg-2)}
-  #benefits.section-alt{background:radial-gradient(60% 55% at 12% 0%,rgba(167,139,250,.08),transparent 62%),var(--bg-2)}
-  #reviews.section-alt{background:radial-gradient(60% 55% at 85% 100%,rgba(251,113,133,.07),transparent 62%),var(--bg-2)}
+  #how.section-alt{background:radial-gradient(60% 55% at 15% 0%,rgba(5,150,105,.06),transparent 62%),var(--bg-2)}
+  #science.section-alt{background:radial-gradient(60% 55% at 85% 0%,rgba(8,145,178,.08),transparent 62%),var(--bg-2)}
+  #benefits.section-alt{background:radial-gradient(60% 55% at 12% 0%,rgba(124,58,237,.08),transparent 62%),var(--bg-2)}
+  #reviews.section-alt{background:radial-gradient(60% 55% at 85% 100%,rgba(225,29,72,.07),transparent 62%),var(--bg-2)}
 
   /* card hover glow — colored, per category */
-  .cat-card:hover,.sci-card:hover{box-shadow:0 22px 46px -22px rgba(34,211,238,.42)}
-  .qa:hover,.how:hover{box-shadow:0 16px 38px -18px rgba(34,211,238,.3)}
-  .ben:hover{box-shadow:0 16px 38px -18px rgba(167,139,250,.28)}
-  .rev:hover{box-shadow:0 16px 38px -18px rgba(251,113,133,.26)}
+  .cat-card:hover,.sci-card:hover{box-shadow:0 22px 46px -22px rgba(8,145,178,.42)}
+  .qa:hover,.how:hover{box-shadow:0 16px 38px -18px rgba(8,145,178,.3)}
+  .ben:hover{box-shadow:0 16px 38px -18px rgba(124,58,237,.28)}
+  .rev:hover{box-shadow:0 16px 38px -18px rgba(225,29,72,.26)}
 
   /* heading underline + eyebrow glow */
-  .h2::after{box-shadow:0 0 14px rgba(34,211,238,.45)}
-  .eyebrow{box-shadow:0 6px 20px -10px rgba(34,211,238,.55)}
+  .h2::after{box-shadow:0 0 14px rgba(8,145,178,.45)}
+  .eyebrow{box-shadow:0 6px 20px -10px rgba(8,145,178,.55)}
+
+  /* ============ TEAM ============ */
+  .team-slider{position:relative;overflow:hidden;cursor:grab;margin-top:10px}
+  .team-slider:active{cursor:grabbing}
+  .team-slider::before,.team-slider::after{content:"";position:absolute;top:0;bottom:0;width:44px;z-index:2;pointer-events:none}
+  .team-slider::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+  .team-slider::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
+  .team-list{display:flex;gap:16px;will-change:transform}
+  .team-item{
+    flex:none;width:min(300px,80vw);
+    background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+    padding:16px;box-shadow:var(--shadow-card);user-select:none;
+  }
+  .team-item img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:13px;border:1px solid var(--border);background:var(--surface-2)}
+  .team-item .tname{font-family:var(--head);font-weight:600;font-size:16px;margin-top:13px;line-height:1.25}
+  .team-item .trole{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin-top:5px}
+  .team-item p{color:var(--muted);font-size:13.5px;margin-top:9px;line-height:1.55}
+  @media(min-width:768px){.team-item{width:312px;padding:18px}}
+
+  /* ============ FAQ ============ */
+  .faq-grid{display:grid;gap:14px}
+  .faq{
+    background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+    overflow:hidden;box-shadow:var(--shadow-card);display:flex;flex-direction:column;
+    transition:transform .2s ease,border-color .2s ease;
+  }
+  .faq:hover{transform:translateY(-3px);border-color:var(--border-strong)}
+  .faq-q{background:linear-gradient(90deg,#0e7490,#0f766e);color:#fff;padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+  .faq-q .qmark{font-family:var(--head);font-size:22px;font-weight:600;font-style:italic;line-height:1.1;flex:none;opacity:.95}
+  .faq-q p{font-size:16px;font-style:italic;line-height:1.45;font-weight:500;color:#fff}
+  .faq-a{padding:20px;display:flex;flex-direction:column;gap:12px;flex:1}
+  .faq-a h3{font-size:17px;font-weight:600;color:var(--text)}
+  .faq-a ul{display:flex;flex-direction:column;gap:9px}
+  .faq-a li{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:var(--muted);line-height:1.55}
+  .faq-a li svg{width:16px;height:16px;color:var(--emerald);flex:none;margin-top:2px}
+  .faq-img{width:100%;height:auto;display:block}
+  .faq-cta{text-align:center;margin-top:38px;display:flex;flex-direction:column;align-items:center;gap:12px}
+  #faq::after{content:"";position:absolute;width:320px;height:320px;right:-100px;top:40px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(8,145,178,.12),transparent 65%)}
+  @media(min-width:640px){.faq-grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:1024px){.faq-grid{grid-template-columns:repeat(4,1fr)}}
 
   /* ============ MOBILE COMPACT ============ */
   @media(max-width:767px){
@@ -733,6 +834,76 @@
   </div>
 </section>
 
+<!-- ================= JOURNEY ================= -->
+<section id="journey">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What to expect</span>
+      <h2 class="h2">How it works.<br /><em class="how-fast">And how fast.</em></h2>
+      <p class="lead">From first message to lasting results — a protocol built for your body, delivered to your door, and refined as you progress.</p>
+    </div>
+
+    <div class="journey-grid">
+      <article class="journey reveal">
+        <div class="journey-top">
+          <span class="journey-step">Step 1</span>
+          <span class="journey-time">Today</span>
+        </div>
+        <h3><strong>Answer a few questions.</strong> We'll handle the rest.</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>No commitment required</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>100% online — takes under 2 minutes</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>100% private and secure</span></li>
+        </ul>
+        <img class="journey-img" src="img/step_1.jpg" alt="" />
+      </article>
+
+      <article class="journey reveal">
+        <div class="journey-top">
+          <span class="journey-step">Step 2</span>
+          <span class="journey-time">Within 24h</span>
+        </div>
+        <h3>A specialist builds your protocol — <strong>for your body.</strong></h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Dosing personalized from day one</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Protocol matched to your body and goals</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Guided by our clinical team</span></li>
+        </ul>
+        <img class="journey-img" src="img/step_2.jpg" alt="" />
+      </article>
+
+      <article class="journey reveal">
+        <div class="journey-top">
+          <span class="journey-step">Step 3</span>
+          <span class="journey-time">Within 2–3 days</span>
+        </div>
+        <h3>Everything you need. <strong>Delivered to your door.</strong></h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Direct from GMP-certified facilities</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Cold-chain, discreet shipping</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Everything to start — peptides, reconstitution kit, and your protocol</span></li>
+        </ul>
+        <img class="journey-img" src="img/step_3.jpg" alt="" />
+      </article>
+
+      <article class="journey reveal">
+        <div class="journey-top">
+          <span class="journey-step">Step 4</span>
+          <span class="journey-time">Every 28 days</span>
+        </div>
+        <h3>Your protocol evolves <strong>as your body does.</strong></h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Progress check-ins — adjustments as needed</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Simple refills — reorder in a few clicks</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Pause, adjust, or cancel anytime</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Unlimited messaging with your support team</span></li>
+        </ul>
+        <img class="journey-img" src="img/step_4.jpg" alt="" />
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ================= PROCESS ================= -->
 <section id="process" data-num="01">
   <div class="wrap">
@@ -870,7 +1041,49 @@
   </div>
 </section>
 
-<!-- ================= BENEFITS ================= -->
+<!-- ================= RESULTS ================= -->
+<section id="results" data-num="06">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">06 — Member results</span>
+      <h2 class="h2">50,000+ members.<br /><span class="grad-text">Life-changing results.</span></h2>
+      <p class="lead">Real protocols, real consistency — here's what members report after a full cycle.</p>
+    </div>
+
+    <div class="res-grid">
+      <article class="res reveal">
+        <div class="res-photo"><img src="img/r1.jpg" alt="" /></div>
+        <div class="stars" role="img" aria-label="5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="res-delta"><span class="num">-38</span><span class="unit">lbs</span></div>
+        <div class="res-name">Erin</div>
+        <p>“Down 38 lbs and finally feeling like myself again. The consistency finally clicked.”</p>
+        <span class="res-verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Verified member</span>
+      </article>
+
+      <article class="res reveal">
+        <div class="res-photo"><img src="img/r2.jpg" alt="" /></div>
+        <div class="stars" role="img" aria-label="5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="res-delta"><span class="num">-61</span><span class="unit">lbs</span></div>
+        <div class="res-name">Danielle</div>
+        <p>“61 lbs gone — and my energy is finally back.”</p>
+        <span class="res-verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Verified member</span>
+      </article>
+
+      <article class="res reveal">
+        <div class="res-photo"><img src="img/r3.jpg" alt="" /></div>
+        <div class="stars" role="img" aria-label="5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="res-delta"><span class="num">-50</span><span class="unit">lbs</span></div>
+        <div class="res-name">Tim</div>
+        <p>“Lost 50 lbs and kept the muscle. Recovery is night and day.”</p>
+        <span class="res-verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Verified member</span>
+      </article>
+    </div>
+
+    <p class="res-note reveal">Individual results vary. Weight-loss results are not typical and depend on diet, exercise and adherence to your protocol.</p>
+  </div>
+</section>
+
+<!--  
 <section id="benefits" data-num="04" class="section-alt">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -913,6 +1126,156 @@
     </div>
   </div>
 </section>
+ -->
+
+<!-- ================= FAQ / OBJECTIONS ================= -->
+<section id="faq" data-num="09">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">09 — Your questions</span>
+      <h2 class="h2">Every reason not to start — <span class="grad-text">answered.</span></h2>
+      <p class="lead">We hear the same questions from every new member. Here's what they wish they knew at the stage you're at now.</p>
+    </div>
+
+    <div class="faq-grid">
+      <article class="faq reveal">
+        <div class="faq-q">
+          <span class="qmark">Q</span>
+          <p>"Is this actually real science?"</p>
+        </div>
+        <div class="faq-a">
+          <h3>Real peptides. Lab-verified.</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>HPLC-verified on every batch, COA included</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Matched to your goal — muscle, repair or metabolic</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Your protocol adjusts as you progress</span></li>
+          </ul>
+        </div>
+        <img class="faq-img" src="img/d1.jpg" alt="" />
+      </article>
+
+      <article class="faq reveal">
+        <div class="faq-q">
+          <span class="qmark">Q</span>
+          <p>"What if I have a question — or something's off?"</p>
+        </div>
+        <div class="faq-a">
+          <h3>Your support team. Anytime.</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Message your clinical support anytime</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>1-on-1 consultation available</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>No guesswork — reconstitution &amp; dosing covered</span></li>
+          </ul>
+        </div>
+        <img class="faq-img" src="img/d2.jpg" alt="" />
+      </article>
+
+      <article class="faq reveal">
+        <div class="faq-q">
+          <span class="qmark">Q</span>
+          <p>"What if shipping is slow or I run out?"</p>
+        </div>
+        <div class="faq-a">
+          <h3>Never a gap in your protocol.</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Ships within 48 hours, cold-chain packed</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Direct from GMP facilities, every lot traceable</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Reorder, pause or adjust anytime</span></li>
+          </ul>
+        </div>
+        <img class="faq-img" src="img/d3.jpg" alt="" />
+      </article>
+
+      <article class="faq reveal">
+        <div class="faq-q">
+          <span class="qmark">Q</span>
+          <p>"Am I on my own after I order?"</p>
+        </div>
+        <div class="faq-a">
+          <h3>You won't be.</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Live guidance from our clinical team</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Reconstitution &amp; protocol guides included</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>A dedicated team from first order to results</span></li>
+          </ul>
+        </div>
+        <img class="faq-img" src="img/d4.jpg" alt="" />
+      </article>
+    </div>
+
+    <div class="faq-cta reveal">
+      <a class="btn btn-wa" onclick="k2()" role="button" tabindex="0">
+        <svg class="ic-sm" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat on WhatsApp
+      </a>
+      <div class="fine">Typically replies within hours · 100% private · free</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= INFLUENCERS (KOL) ================= -->
+<section id="influencers" class="section-alt">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">As recommended by</span>
+      <h2 class="h2">Creators who test <span class="grad-text">everything.</span></h2>
+      <p class="lead">Real members and creators put our peptides through their own cameras — product intros, unboxings and skincare routines.</p>
+    </div>
+
+    <div class="kol-slider reveal" id="kol-slider">
+      <div class="kol-track" id="kol-track">
+        <figure class="kol">
+          <div class="kol-video">
+            <video src="img/v/jieshao.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Product introduction video"></video>
+          </div>
+          <figcaption class="kol-meta">
+            <span class="kol-tag">Product intro</span>
+            <p class="kol-cap">A closer look at the peptides, purity and protocols inside every kit.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="kol">
+          <div class="kol-video">
+            <video src="img/v/jieshao2.mp4" autoplay muted loop playsinline preload="metadata" aria-label="How it works video"></video>
+          </div>
+          <figcaption class="kol-meta">
+            <span class="kol-tag">How it works</span>
+            <p class="kol-cap">From reconstitution to dosing — what to expect, step by step.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="kol">
+          <div class="kol-video">
+            <video src="img/v/fankui.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Member unboxing video"></video>
+          </div>
+          <figcaption class="kol-meta">
+            <span class="kol-tag">Member unboxing</span>
+            <p class="kol-cap">What actually arrives — cold-chain packed, with the COA included.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="kol">
+          <div class="kol-video">
+            <video src="img/v/meirong.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Peptide skincare video"></video>
+          </div>
+          <figcaption class="kol-meta">
+            <span class="kol-tag">Peptide skincare</span>
+            <p class="kol-cap">Beauty-focused peptides for skin elasticity, collagen and glow.</p>
+          </figcaption>
+        </figure>
+      </div>
+
+      <button class="kol-arrow kol-prev" id="kol-prev" type="button" aria-label="Previous videos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="kol-arrow kol-next" id="kol-next" type="button" aria-label="Next videos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
 
 <!-- ================= REVIEWS ================= -->
 <section id="reviews" data-num="05" class="section-alt">
@@ -1005,11 +1368,59 @@
   </div>
 </section>
 
-<!-- ================= QUALITY / ABOUT ================= -->
-<section id="quality" data-num="06">
+<!-- ================= TEAM ================= -->
+<section id="team" data-num="08">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">06 — Trust &amp; compliance</span>
+      <span class="eyebrow">08 — Meet the team</span>
+      <h2 class="h2"> <span class="grad-text">Our expert team.</span></h2>
+      <p class="lead">A dedicated clinical support team — from medical advisors to coaches — guiding you from first order to lasting results.</p>
+    </div>
+  </div>
+
+  <div class="team-slider reveal" id="team-slider">
+    <div class="team-list" id="team-list">
+      <div class="team-item">
+        <img src="https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ecf30e7361ca1899f57f0e_73b656696b381145271d523a311a0770_648b5b0b61beb5822e252485fb6ddea0.jpg" alt="Neely Wood (RN)" />
+        <div class="tname">Neely Wood (RN)</div>
+        <div class="trole">Clinical Nurse</div>
+        <p>Your clinical support specialist answers questions and helps you feel confident through every stage of your protocol — working closely with our advisors to make sure you have what you need.</p>
+      </div>
+      <div class="team-item">
+        <img src="https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ecf30e7206ee02a593f1d7_7769961b276369f8032bb3e3a5877236_54cb2ad0c600cd694040ae6ac0730875.avif" alt="Noah Swendson" />
+        <div class="tname">Noah Swendson</div>
+        <div class="trole">Member Success Manager</div>
+        <p>Your go-to support person throughout your journey. They check in regularly to answer questions and make sure you're fully supported every step of the way.</p>
+      </div>
+      <div class="team-item">
+        <img src="https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ecf30dedb3213e172aeb89_f9a4012f8f299f1fe2d4b199e0d864fd_bd8e6bb622a050c89e58a6042c8843db.jpg" alt="Dr. Asad Niazi (MD)" />
+        <div class="tname">Dr. Asad Niazi (MD)</div>
+        <div class="trole">Medical Advisor</div>
+        <p>Our medical advisor helps tailor the right peptide protocol to your goals and fine-tunes it as you progress — with follow-up consultations for expert, personalized guidance.</p>
+      </div>
+      <div class="team-item">
+        <img src="https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ed95eb62f1bbce21cedf34_e843f54258fb437d5424e0c69dba9df6_45dc2629fb3a35d349ce5866a39f472e.avif" alt="Pardise Mossalman (CHC)" />
+        <div class="tname">Pardise Mossalman (CHC)</div>
+        <div class="trole">Health Coach</div>
+        <p>Your Health Coach guides you in building the healthy habits that complement your protocol — sustainable changes that help you reach your goals.</p>
+      </div>
+      <div class="team-item">
+        <img src="https://cdn.prod.website-files.com/67e50a30ed05c373d6f69a0d/67ecf31a8a54909310dffebb_00107dda71c470aeb9207d57a0fa1fb2_59a6364416f0084d5e65ff2fa16eb0e5.avif" alt="Roseanne Schnell (RD)" />
+        <div class="tname">Roseanne Schnell (RD)</div>
+        <div class="trole">Nutrition &amp; Lifestyle</div>
+        <p>Our expert coaches and nutritionists have built online resources to support lasting lifestyle change — nutrition, movement and mindset, all designed around your success.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ================= QUALITY / ABOUT ================= -->
+<section id="quality" data-num="07">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">07 — Trust &amp; compliance</span>
       <h2 class="h2">Quality you can <span class="grad-text">audit.</span></h2>
       <p class="lead">GMP manufacturing, high homology to endogenous sequences, and a paper trail on every lot.</p>
     </div>
@@ -1093,6 +1504,73 @@
     </div>
   </div>
 </section>
+
+
+<script>
+  (function(){
+    var slider = document.getElementById('team-slider');
+    var track = document.getElementById('team-list');
+    if(!slider || !track) return;
+
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var speed = reduce ? 0 : 0.4;   // auto-scroll px per frame
+    var pos = 0;
+    var dragging = false, prevX = 0, vel = 0;
+
+    // duplicate content for seamless looping
+    track.innerHTML += track.innerHTML;
+
+    function tick(){
+      if(!dragging){ pos -= speed; }
+      else { pos += vel; vel *= 0.92; }
+
+      var half = track.scrollWidth / 2;
+      if(half > 0){
+        if(pos < -half){ pos += half; }   // seamless wrap
+        if(pos > 0){ pos = 0; }           // stop at the start edge
+      }
+      track.style.transform = 'translateX(' + pos + 'px)';
+      requestAnimationFrame(tick);
+    }
+
+    function down(e){
+      dragging = true;
+      var x = e.pageX || (e.touches && e.touches[0].pageX) || 0;
+      prevX = x; vel = 0;
+    }
+    function move(e){
+      if(!dragging) return;
+      var x = e.pageX || (e.touches && e.touches[0].pageX) || 0;
+      var dx = x - prevX;
+      pos += dx; vel = dx; prevX = x;
+    }
+    function up(){ dragging = false; }
+
+    slider.addEventListener('mousedown', down);
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+    slider.addEventListener('touchstart', down, {passive:true});
+    slider.addEventListener('touchmove', move, {passive:true});
+    slider.addEventListener('touchend', up);
+
+    requestAnimationFrame(tick);
+  })();
+</script>
+
+<script>
+(function(){
+  var track = document.getElementById('kol-track');
+  var prev = document.getElementById('kol-prev');
+  var next = document.getElementById('kol-next');
+  if(!track || !prev || !next) return;
+  function step(){
+    var item = track.querySelector('.kol');
+    return item ? item.getBoundingClientRect().width + 16 : 280;
+  }
+  prev.addEventListener('click', function(){ track.scrollBy({left:-step(), behavior:'smooth'}); });
+  next.addEventListener('click', function(){ track.scrollBy({left:step(), behavior:'smooth'}); });
+})();
+</script>
 
 <!-- ================= FOOTER ================= -->
 <footer>
