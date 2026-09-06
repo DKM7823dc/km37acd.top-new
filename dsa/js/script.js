@@ -3,7 +3,7 @@ const girlsData = [
     {
         id: 1,
         images: ['img/1.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a1.jpg*/, 'a2.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a2.jpg*/, 'a3.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a3.jpg*/],
-        name: 'さくら',
+        name: '甜甜',
         age: 23,
         ageGroup: '20-25',
         style: 'sweet',
@@ -14,7 +14,7 @@ const girlsData = [
     {
         id: 2,
         images: ['img/2.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a4.jpg*/, 'a5.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a5.jpg*/, 'a6.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a6.jpg*/],
-        name: 'ゆり',
+        name: '月儿',
         age: 23,
         ageGroup: '20-25',
         style: 'sexy',
@@ -25,7 +25,7 @@ const girlsData = [
     {
         id: 3,
         images: ['img/3.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a7.jpg*/, 'a8.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a8.jpg*/, 'a9.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a9.jpg*/],
-        name: 'りん',
+        name: '小美',
         age: 25,
         ageGroup: '20-25',
         style: 'pure',
@@ -36,7 +36,7 @@ const girlsData = [
     {
         id: 4,
         images: ['img/4.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a10.jpg*/, 'a11.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a11.jpg*/, 'a12.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a12.jpg*/],
-        name: 'ゆき',
+        name: '晴儿',
         age: 26,
         ageGroup: '26-35',
         style: 'mature',
@@ -47,7 +47,7 @@ const girlsData = [
     {
         id: 5,
         images: ['img/5.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a13.jpg*/, 'a14.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a14.jpg*/, 'a15.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a15.jpg*/],
-        name: 'みみ',
+        name: '小依',
         age: 23,
         ageGroup: '18-25',
         style: 'sexy',
@@ -58,7 +58,7 @@ const girlsData = [
     {
         id: 6,
         images: ['img/6.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a1.jpg*/, 'a2.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a2.jpg*/, 'a3.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a3.jpg*/],
-        name: 'さくら',
+        name: '欣儿',
         age: 23,
         ageGroup: '20-25',
         style: 'sweet',
@@ -69,7 +69,7 @@ const girlsData = [
     {
         id: 7,
         images: ['img/7.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a2.jpg*/, 'a5.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a5.jpg*/, 'a8.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a8.jpg*/],
-        name: 'かおり',
+        name: '小雨',
         age: 35,
         ageGroup: '26-35',
         style: 'sweet',
@@ -80,7 +80,7 @@ const girlsData = [
     {
         id: 8,
         images: ['img/8.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a3.jpg*/, 'a6.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a6.jpg*/, 'a9.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a9.jpg*/],
-        name: 'まい',
+        name: '小溪',
         age: 32,
         ageGroup: '26-35',
         style: 'mature',
@@ -91,7 +91,7 @@ const girlsData = [
     {
         id: 9,
         images: ['img/9.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a10.jpg*/, 'a11.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a11.jpg*/, 'a12.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a12.jpg*/],
-        name: 'ゆき',
+        name: '菲菲',
         age: 26,
         ageGroup: '26-35',
         style: 'mature',
@@ -102,7 +102,7 @@ const girlsData = [
     {
         id: 10,
         images: ['img/10.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a11.jpg*/, 'a14.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a14.jpg*/, 'a2.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a2.jpg*/],
-        name: 'あやか',
+        name: '小宛',
         age: 24,
         ageGroup: '18-25',
         style: 'sweet',
@@ -113,7 +113,7 @@ const girlsData = [
     {
         id: 11,
         images: ['img/11.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a12.jpg*/, 'a15.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a15.jpg*/, 'a3.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a3.jpg*/],
-        name: 'さな',
+        name: '雪儿',
         age: 27,
         ageGroup: '26-35',
         style: 'sexy',
