@@ -1,4 +1,4 @@
-// 女性データ設定 - 各自に複数の画像を設定（スライダー用）
+// 女性数据设置 - 每人设置多张图片（用于轮播）
 const girlsData = [
     {
         id: 1,
@@ -8,8 +8,8 @@ const girlsData = [
         ageGroup: '20-25',
         style: 'sweet',
         body: 'slim',
-        description: '現役大学院生、新しい刺激を探究するのが好き',
-        tags: ['フェラOK', '中出しOK', '3P OK', '刺激好き']
+        description: '在读研究生，喜欢探索新的刺激',
+        tags: ['口交OK', '内射OK', '3P OK', '喜欢刺激']
     },
     {
         id: 2,
@@ -19,8 +19,8 @@ const girlsData = [
         ageGroup: '20-25',
         style: 'sexy',
         body: 'curvy',
-        description: 'セクシーなOL、抜群のプロポーションで魅惑的',
-        tags: ['パイズリOK', '生挿入OK', 'バックOK', '甘くて可愛い']
+        description: '性感OL，身材出众，魅力十足',
+        tags: ['乳交OK', '无套插入OK', '后入OK', '甜美可爱']
     },
     {
         id: 3,
@@ -30,8 +30,8 @@ const girlsData = [
         ageGroup: '20-25',
         style: 'pure',
         body: 'slim',
-        description: 'パートタイムモデル、豊満なボディ、濡れやすくイキやすい',
-        tags: ['中出しOK', 'フェラOK', '顔射OK', 'サービス精神旺盛']
+        description: '兼职模特，丰满身材，容易湿润和达到高潮',
+        tags: ['内射OK', '口交OK', '颜射OK', '服务精神旺盛']
     },
     {
         id: 4,
@@ -41,8 +41,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'mature',
         body: 'curvy',
-        description: '成熟した人妻、欲求不満で刺激を求めている',
-        tags: ['3P OK', '生挿入OK', 'バックOK', 'テクニック一流']
+        description: '成熟人妻，欲求不满，寻求刺激',
+        tags: ['3P OK', '无套插入OK', '后入OK', '技术一流']
     },
     {
         id: 5,
@@ -52,8 +52,8 @@ const girlsData = [
         ageGroup: '18-25',
         style: 'sexy',
         body: 'fit',
-        description: 'プロモデル、S字カーブ、体が柔らかい',
-        tags: ['フェラOK', 'パイズリOK', '豊富な体位', '持久力抜群']
+        description: '专业模特，S形曲线，身体柔软',
+        tags: ['口交OK', '乳交OK', '体位丰富', '持久力出众']
     },
     {
         id: 6,
@@ -63,8 +63,8 @@ const girlsData = [
         ageGroup: '20-25',
         style: 'sweet',
         body: 'slim',
-        description: '現役大学院生、新しい刺激を探究するのが好き',
-        tags: ['フェラOK', '中出しOK', '3P OK', '刺激好き']
+        description: '在读研究生，喜欢探索新的刺激',
+        tags: ['口交OK', '内射OK', '3P OK', '喜欢刺激']
     },
     {
         id: 7,
@@ -74,8 +74,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'sweet',
         body: 'curvy',
-        description: '成熟した人妻、豊満なボディで優しく思いやりがある',
-        tags: ['フェラOK', '中出しOK', 'パイズリOK', 'Dカップ']
+        description: '成熟人妻，丰满身材，温柔体贴',
+        tags: ['口交OK', '内射OK', '乳交OK', 'D罩杯']
     },
     {
         id: 8,
@@ -85,8 +85,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'mature',
         body: 'curvy',
-        description: '熟女の女上司、色気があり、新しい刺激が好き',
-        tags: ['生挿入OK', 'バックOK', 'パイズリOK', '経験豊富']
+        description: '熟女女上司，有魅力，喜欢新刺激',
+        tags: ['无套插入OK', '后入OK', '乳交OK', '经验丰富']
     },
     {
         id: 9,
@@ -96,8 +96,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'mature',
         body: 'curvy',
-        description: '成熟した人妻、欲求不満で刺激を求めている',
-        tags: ['3P OK', '生挿入OK', 'バックOK', 'テクニック一流']
+        description: '成熟人妻，欲求不满，寻求刺激',
+        tags: ['3P OK', '无套插入OK', '后入OK', '技术一流']
     },
     {
         id: 10,
@@ -107,8 +107,8 @@ const girlsData = [
         ageGroup: '18-25',
         style: 'sweet',
         body: 'fit',
-        description: 'パティシエ、豊満なボディ、敏感体質',
-        tags: ['顔射OK', 'フェラOK', '3P OK', '敏感体質']
+        description: '糕点师，丰满身材，敏感体质',
+        tags: ['颜射OK', '口交OK', '3P OK', '敏感体质']
     },
     {
         id: 11,
@@ -118,8 +118,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'sexy',
         body: 'fit',
-        description: 'セクシーモデル、極上のボディと一流のテクニック',
-        tags: ['パイズリOK', '生挿入OK', 'バックOK', '中出しOK']
+        description: '性感模特，顶级身材和一流技巧',
+        tags: ['乳交OK', '无套插入OK', '后入OK', '内射OK']
     },
     {
         id: 12,
@@ -129,8 +129,8 @@ const girlsData = [
         ageGroup: '20-25',
         style: 'sexy',
         body: 'curvy',
-        description: 'セクシーなOL、抜群のプロポーションで魅惑的',
-        tags: ['パイズリOK', '生挿入OK', 'バックOK', '甘くて可愛い']
+        description: '性感OL，身材出众，魅力十足',
+        tags: ['乳交OK', '无套插入OK', '后入OK', '甜美可爱']
     },
     {
         id: 13,
@@ -140,8 +140,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'mature',
         body: 'slim',
-        description: 'スリムな熟女、飢えていて満足を求めている',
-        tags: ['生挿入OK', '3P OK', 'バックOK', '超欲求不満']
+        description: '苗条熟女，饥渴寻求满足',
+        tags: ['无套插入OK', '3P OK', '后入OK', '极度欲求不满']
     },
     {
         id: 14,
@@ -151,8 +151,8 @@ const girlsData = [
         ageGroup: '20-25',
         style: 'sexy',
         body: 'slim',
-        description: 'セクシーダンサー、豊満なボディでセクシーダンスが得意',
-        tags: ['フェラOK', 'パイズリOK', '顔射OK', '爆乳']
+        description: '性感舞者，丰满身材，擅长性感舞蹈',
+        tags: ['口交OK', '乳交OK', '颜射OK', '爆乳']
     },
     {
         id: 15,
@@ -162,8 +162,8 @@ const girlsData = [
         ageGroup: '20-25',
         style: 'sexy',
         body: 'fit',
-        description: 'プロモデル、S字カーブ、体が柔らかい',
-        tags: ['フェラOK', 'パイズリOK', '豊富な体位', '持久力抜群']
+        description: '专业模特，S形曲线，身体柔软',
+        tags: ['口交OK', '乳交OK', '体位丰富', '持久力出众']
     },
     {
         id: 16,
@@ -173,8 +173,8 @@ const girlsData = [
         ageGroup: '20-25',
         style: 'sweet',
         body: 'slim',
-        description: '現役大学院生、新しい刺激を探究するのが好き',
-        tags: ['フェラOK', '中出しOK', '3P OK', '刺激好き']
+        description: '在读研究生，喜欢探索新的刺激',
+        tags: ['口交OK', '内射OK', '3P OK', '喜欢刺激']
     },
     {
         id: 17,
@@ -184,8 +184,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'sweet',
         body: 'curvy',
-        description: '成熟した人妻、豊満なボディで優しく思いやりがある',
-        tags: ['フェラOK', '中出しOK', 'パイズリOK', 'Dカップ']
+        description: '成熟人妻，丰满身材，温柔体贴',
+        tags: ['口交OK', '内射OK', '乳交OK', 'D罩杯']
     },
     {
         id: 18,
@@ -195,8 +195,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'mature',
         body: 'curvy',
-        description: '熟女の女上司、色気があり、新しい刺激が好き',
-        tags: ['生挿入OK', 'バックOK', 'パイズリOK', '経験豊富']
+        description: '熟女女上司，有魅力，喜欢新刺激',
+        tags: ['无套插入OK', '后入OK', '乳交OK', '经验丰富']
     },
     {
         id: 19,
@@ -206,8 +206,8 @@ const girlsData = [
         ageGroup: '20-25',
         style: 'sexy',
         body: 'curvy',
-        description: 'セクシーなOL、抜群のプロポーションで魅惑的',
-        tags: ['パイズリOK', '生挿入OK', 'バックOK', '甘くて可愛い']
+        description: '性感OL，身材出众，魅力十足',
+        tags: ['乳交OK', '无套插入OK', '后入OK', '甜美可爱']
     },
     {
         id: 20,
@@ -217,8 +217,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'mature',
         body: 'slim',
-        description: 'スリムな熟女、飢えていて満足を求めている',
-        tags: ['生挿入OK', '3P OK', 'バックOK', '超欲求不満']
+        description: '苗条熟女，饥渴寻求满足',
+        tags: ['无套插入OK', '3P OK', '后入OK', '极度欲求不满']
     },
     {
         id: 21,
@@ -228,8 +228,8 @@ const girlsData = [
         ageGroup: '20-25',
         style: 'sexy',
         body: 'slim',
-        description: 'セクシーダンサー、豊満なボディでセクシーダンスが得意',
-        tags: ['フェラOK', 'パイズリOK', '顔射OK', '爆乳']
+        description: '性感舞者，丰满身材，擅长性感舞蹈',
+        tags: ['口交OK', '乳交OK', '颜射OK', '爆乳']
     },
     {
         id: 22,
@@ -239,8 +239,8 @@ const girlsData = [
         ageGroup: '20-25',
         style: 'pure',
         body: 'slim',
-        description: 'パートタイムモデル、豊満なボディ、濡れやすくイキやすい',
-        tags: ['中出しOK', 'フェラOK', '顔射OK', 'サービス精神旺盛']
+        description: '兼职模特，丰满身材，容易湿润和达到高潮',
+        tags: ['内射OK', '口交OK', '颜射OK', '服务精神旺盛']
     },
     {
         id: 23,
@@ -250,8 +250,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'pure',
         body: 'slim',
-        description: '清純派熟女、美容師、スリムで上品な雰囲気',
-        tags: ['フェラOK', '中出しOK', 'サービス精神旺盛', 'パイパン']
+        description: '清纯派熟女，美容师，苗条优雅',
+        tags: ['口交OK', '内射OK', '服务精神旺盛', '白虎']
     },
     {
         id: 24,
@@ -261,8 +261,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'pure',
         body: 'curvy',
-        description: '豊満な人妻、豊満なボディで気品がある',
-        tags: ['ビクビクしやすい', '3P OK', 'バックOK', '清楚ビッチ']
+        description: '丰满人妻，身材丰满且有气质',
+        tags: ['容易颤抖', '3P OK', '后入OK', '清纯碧池']
     },
     {
         id: 25,
@@ -272,8 +272,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'mature',
         body: 'curvy',
-        description: '成熟した人妻、欲求不満で刺激を求めている',
-        tags: ['3P OK', '生挿入OK', 'バックOK', 'テクニック一流']
+        description: '成熟人妻，欲求不满，寻求刺激',
+        tags: ['3P OK', '无套插入OK', '后入OK', '技术一流']
     },
     {
         id: 26,
@@ -283,8 +283,8 @@ const girlsData = [
         ageGroup: '18-25',
         style: 'sweet',
         body: 'fit',
-        description: 'パティシエ、豊満なボディ、敏感体質',
-        tags: ['顔射OK', 'フェラOK', '3P OK', '敏感体質']
+        description: '糕点师，丰满身材，敏感体质',
+        tags: ['颜射OK', '口交OK', '3P OK', '敏感体质']
     },
     {
         id: 27,
@@ -294,8 +294,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'sweet',
         body: 'slim',
-        description: '甘いマスクの熟女、スリムで優しく可愛らしい',
-        tags: ['フェラOK', '中出しOK', '顔射OK', '超優しい']
+        description: '甜美面孔的熟女，苗条温柔可爱',
+        tags: ['口交OK', '内射OK', '颜射OK', '超级温柔']
     },
     {
         id: 28,
@@ -305,8 +305,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'sweet',
         body: 'curvy',
-        description: '甘いマスクの人妻、豊満でセクシー、優しく思いやりがある',
-        tags: ['パイズリOK', '3P OK', '生挿入OK', '気配り上手']
+        description: '甜美面孔的人妻，丰满性感，温柔体贴',
+        tags: ['乳交OK', '3P OK', '无套插入OK', '善于照顾']
     },
     {
         id: 29,
@@ -316,8 +316,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'sweet',
         body: 'fit',
-        description: '甘いマスクの熟女、フィットネスボディで活力に溢れている',
-        tags: ['バックOK', '中出しOK', '豊富な体位', '超エネルギッシュ']
+        description: '甜美面孔的熟女，健身身材充满活力',
+        tags: ['后入OK', '内射OK', '体位丰富', '超级精力充沛']
     },
     {
         id: 30,
@@ -327,8 +327,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'mature',
         body: 'slim',
-        description: '成熟して知的、スリムで上品な雰囲気',
-        tags: ['フェラOK', '3P OK', 'サービス精神旺盛', '超知的']
+        description: '成熟知性，苗条优雅',
+        tags: ['口交OK', '3P OK', '服务精神旺盛', '超级知性']
     },
     {
         id: 31,
@@ -338,8 +338,8 @@ const girlsData = [
         ageGroup: '20-25',
         style: 'sweet',
         body: 'slim',
-        description: '現役大学院生、新しい刺激を探究するのが好き',
-        tags: ['フェラOK', '中出しOK', '3P OK', '刺激好き']
+        description: '在读研究生，喜欢探索新的刺激',
+        tags: ['口交OK', '内射OK', '3P OK', '喜欢刺激']
     },
     {
         id: 32,
@@ -349,8 +349,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'sweet',
         body: 'curvy',
-        description: '成熟した人妻、豊満なボディで優しく思いやりがある',
-        tags: ['フェラOK', '中出しOK', 'パイズリOK', 'Dカップ']
+        description: '成熟人妻，丰满身材，温柔体贴',
+        tags: ['口交OK', '内射OK', '乳交OK', 'D罩杯']
     },
     {
         id: 33,
@@ -360,8 +360,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'mature',
         body: 'curvy',
-        description: '熟女の女上司、色気があり、新しい刺激が好き',
-        tags: ['生挿入OK', 'バックOK', 'パイズリOK', '経験豊富']
+        description: '熟女女上司，有魅力，喜欢新刺激',
+        tags: ['无套插入OK', '后入OK', '乳交OK', '经验丰富']
     },
     {
         id: 34,
@@ -371,8 +371,8 @@ const girlsData = [
         ageGroup: '20-25',
         style: 'sexy',
         body: 'curvy',
-        description: 'セクシーなOL、抜群のプロポーションで魅惑的',
-        tags: ['パイズリOK', '生挿入OK', 'バックOK', '甘くて可愛い']
+        description: '性感OL，身材出众，魅力十足',
+        tags: ['乳交OK', '无套插入OK', '后入OK', '甜美可爱']
     },
     {
         id: 35,
@@ -382,10 +382,9 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'mature',
         body: 'slim',
-        description: 'スリムな熟女、飢えていて満足を求めている',
-        tags: ['生挿入OK', '3P OK', 'バックOK', '超欲求不満']
-    }
-    ,
+        description: '苗条熟女，饥渴寻求满足',
+        tags: ['无套插入OK', '3P OK', '后入OK', '极度欲求不满']
+    },
     {
         id: 36,
         images: ['img/36.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a10.jpg*/, 'a11.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a11.jpg*/, 'a12.jpg'/*tpa=https://yyffhy.top/aakk19/static/js/static/images/girls/a12.jpg*/],
@@ -394,8 +393,8 @@ const girlsData = [
         ageGroup: '26-35',
         style: 'mature',
         body: 'curvy',
-        description: '成熟した人妻、欲求不満で刺激を求めている',
-        tags: ['3P OK', '生挿入OK', 'バックOK', 'テクニック一流']
+        description: '成熟人妻，欲求不满，寻求刺激',
+        tags: ['3P OK', '无套插入OK', '后入OK', '技术一流']
     },
     {
         id: 37,
@@ -405,8 +404,8 @@ const girlsData = [
         ageGroup: '35+',
         style: 'sweet',
         body: 'fit',
-        description: 'パティシエ、豊満なボディ、敏感体質',
-        tags: ['顔射OK', 'フェラOK', '3P OK', '敏感体質']
+        description: '糕点师，丰满身材，敏感体质',
+        tags: ['颜射OK', '口交OK', '3P OK', '敏感体质']
     },
     {
         id: 38,
@@ -416,8 +415,8 @@ const girlsData = [
         ageGroup: '35+',
         style: 'sweet',
         body: 'slim',
-        description: '甘いマスクの熟女、スリムで優しく可愛らしい',
-        tags: ['フェラOK', '中出しOK', '顔射OK', '超優しい']
+        description: '甜美面孔的熟女，苗条温柔可爱',
+        tags: ['口交OK', '内射OK', '颜射OK', '超级温柔']
     },
     {
         id: 39,
@@ -427,8 +426,8 @@ const girlsData = [
         ageGroup: '35+',
         style: 'sweet',
         body: 'curvy',
-        description: '甘いマスクの人妻、豊満でセクシー、優しく思いやりがある',
-        tags: ['パイズリOK', '3P OK', '生挿入OK', '気配り上手']
+        description: '甜美面孔的人妻，丰满性感，温柔体贴',
+        tags: ['乳交OK', '3P OK', '无套插入OK', '善于照顾']
     },
     {
         id: 40,
@@ -438,12 +437,12 @@ const girlsData = [
         ageGroup: '35+',
         style: 'sweet',
         body: 'fit',
-        description: '甘いマスクの熟女、フィットネスボディで活力に溢れている',
-        tags: ['バックOK', '中出しOK', '豊富な体位', '超エネルギッシュ']
-    },
+        description: '甜美面孔的熟女，健身身材充满活力',
+        tags: ['后入OK', '内射OK', '体位丰富', '超级精力充沛']
+    }
 ];
 
-// 現在のフィルター条件
+// 当前的筛选条件
 let currentFilters = {
     age: 'all',
     style: 'all',
@@ -452,27 +451,27 @@ let currentFilters = {
 
 let filteredGirls = [];
 
-// 初期化
+// 初始化
 document.addEventListener('DOMContentLoaded', function() {
     initFilters();
     renderGirls();
 });
 
-// モーダル表示
+// 显示弹窗
 function showModal() {
     const modal = document.getElementById('successModal');
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
 
-// モーダル非表示
+// 隐藏弹窗
 function closeModal() {
     const modal = document.getElementById('successModal');
     modal.classList.remove('active');
     document.body.style.overflow = '';
 }
 
-// フィルター初期化
+// 筛选初始化
 function initFilters() {
     const ageFilter = document.getElementById('age-filter');
     const styleFilter = document.getElementById('style-filter');
@@ -503,7 +502,7 @@ function initFilters() {
     });
 }
 
-// アクティブフィルターボタン設定
+// 设置激活的筛选按钮
 function setActiveFilter(container, activeBtn) {
     container.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
@@ -511,11 +510,11 @@ function setActiveFilter(container, activeBtn) {
     activeBtn.classList.add('active');
 }
 
-// 女性カードのレンダリング
+// 渲染女性卡片
 function renderGirls() {
     const grid = document.getElementById('girls-grid');
     
-    // データフィルタリング
+    // 数据筛选
     filteredGirls = girlsData.filter(girl => {
         const ageMatch = currentFilters.age === 'all' || girl.ageGroup === currentFilters.age;
         const styleMatch = currentFilters.style === 'all' || girl.style === currentFilters.style;
@@ -523,9 +522,9 @@ function renderGirls() {
         return ageMatch && styleMatch && bodyMatch;
     });
 
-    // HTML生成
+    // 生成HTML
     if (filteredGirls.length === 0) {
-        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #fff; font-size: 18px;">条件に一致する会員がいません。絞り込み条件を変更してください。</div>';
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #fff; font-size: 18px;">没有符合条件的会员，请更改筛选条件。</div>';
         return;
     }
 
@@ -533,23 +532,23 @@ function renderGirls() {
         <div class="girl-card">
             <div class="girl-image-container">
                 <img src="${girl.images[0]}" alt="${girl.name}" class="girl-image">
-                <div class="online-badge">オンライン</div>
+                <div class="online-badge">在线</div>
             </div>
             <div class="girl-info">
                 <div class="girl-header">
                     <div class="girl-name">${girl.name}</div>
-                    <div class="girl-age">${girl.age}歳</div>
+                    <div class="girl-age">${girl.age}岁</div>
                 </div>
                 <div class="girl-desc">${girl.description}</div>
                 <div class="girl-tags">
-                    ${girl.tags.map(tag => `<span class="tag ${tag.includes('3P') || tag.includes('生挿入') || tag.includes('中出し') ? 'hot' : ''}">${tag}</span>`).join('')}
+                    ${girl.tags.map(tag => `<span class="tag ${tag.includes('3P') || tag.includes('无套插入') || tag.includes('内射') ? 'hot' : ''}">${tag}</span>`).join('')}
                 </div>
             </div>
         </div>
     `).join('');
 }
 
-// スムーズスクロール
+// 平滑滚动
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
